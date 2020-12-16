@@ -1,5 +1,0 @@
-package git;
-//lol—° ÷
-public class Szg {
-
-}
