@@ -43,10 +43,29 @@ public class ProductDao extends BaseDao{
 		
 	}
 	
+	public Product queryProductById(int pid) {
+		String sql = "select * from product where pid=?";
+		return jt.query(sql, rs->{
+			return rs.next() ? productRowMapper.mapRow(rs, -1) : null;
+		}, pid);
+		
+	}
+	public List<Product> queryProductByCsid(int csid) {
+		String sql = "select * from product where csid=?";
+		return jt.query(sql, productRowMapper,csid);
+	}
+	
+	public List<Product> queryProductByCid(int cid) {
+		String sql = "select product.* from product,categorysecond where "
+				+ "product.csid=categorysecond.csid and categorysecond.cid=?";
+		return jt.query(sql, productRowMapper,cid);
+	}
 	
 	
 	
-	//创建 RowMapper
+	/**
+	 * 创建 RowMapper
+	 */
 	private RowMapper<Product> productRowMapper = new RowMapper<Product>() {
 
 		@Override
@@ -63,7 +82,6 @@ public class ProductDao extends BaseDao{
 			p.setPname(rs.getString("pname"));
 			return p;
 		}
-		
 	};
 
 }
