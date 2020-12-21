@@ -24,6 +24,14 @@ public class ShopAction {
 	@Resource
 	private CartBiz cbiz;
 	
+	/**
+	 * shop页面
+	 * @param m
+	 * @param name
+	 * @param page
+	 * @param mav
+	 * @return
+	 */
 	@GetMapping("shop")
 	public ModelAndView shop(Model m, String name,@RequestParam(defaultValue="1")int page,ModelAndView mav) {
 		PageHelper.startPage(page, 9);
@@ -34,6 +42,13 @@ public class ShopAction {
 		return mav;
 	}
 	
+	/**
+	 * 分类查询
+	 * @param cid
+	 * @param m
+	 * @param mav
+	 * @return
+	 */
 	@GetMapping("cateshop")
 	public ModelAndView shop(int cid,Model m,ModelAndView mav) {
 		mav.addObject("shoplist", pmapper.SelectByCid(cid));
@@ -43,6 +58,13 @@ public class ShopAction {
 		return mav;
 	}
 
+	/**
+	 * 商品详情
+	 * @param pid
+	 * @param m
+	 * @param mav
+	 * @return
+	 */
 	@GetMapping("detail")
 	public ModelAndView datail(int  pid,Model m,ModelAndView mav) {
 		mav.addObject("detail", pmapper.SelectById(pid));
@@ -58,18 +80,33 @@ public class ShopAction {
 	 * //使用响应重定向方式跳转 return "redirect:/"; }
 	 */
 
+	/**
+	 * 关于我们
+	 * @param mav
+	 * @return
+	 */
 	@GetMapping("aboutus")
 	public ModelAndView aboutus(ModelAndView mav) {
 		mav.setViewName("aboutus");	
 		return mav;
 	}
 	
+	/**
+	 * 照片墙
+	 * @param mav
+	 * @return
+	 */
 	@GetMapping("gallery")
 	public ModelAndView gallery(ModelAndView mav) {
 		mav.setViewName("gallery");	
 		return mav;
 	}
 	
+	/**
+	 * 服务
+	 * @param mav
+	 * @return
+	 */
 	@GetMapping("services")
 	public ModelAndView services(ModelAndView mav) {	
 		mav.setViewName("services");	
