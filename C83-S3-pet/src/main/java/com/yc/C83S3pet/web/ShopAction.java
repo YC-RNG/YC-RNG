@@ -59,6 +59,24 @@ public class ShopAction {
 	}
 
 	/**
+	 * 查询商品
+	 * @param pname
+	 * @param mav
+	 * @param value
+	 * @return
+	 */
+	@GetMapping("selectshop")
+	public ModelAndView shop(String pname, ModelAndView mav, Object value) {
+		mav.addObject("shoplist", pmapper.SelectByPname(pname));
+		mav.addObject("clist", cmapper.SelectbyAll());
+		mav.addObject("plist", pmapper.SelectByPart());
+		mav.setViewName("selectshop");
+		return mav;
+		
+	}
+	
+	
+	/**
 	 * 商品详情
 	 * @param pid
 	 * @param m

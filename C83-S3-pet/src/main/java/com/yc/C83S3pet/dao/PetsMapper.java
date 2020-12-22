@@ -19,4 +19,7 @@ public interface PetsMapper {
 	@Select("select * from pets where cid=#{cid}")
 	public List<Pets> SelectByCid(int cid);
 	
+	@Select("select * from pets where pname=#(pname)")
+	public List<Pets> SelectByPname(String pname);
+	
 }
