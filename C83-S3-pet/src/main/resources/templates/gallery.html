@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="www.thymeleaf.org">
+<head>
+	<!-- set the encoding of your site -->
+	<meta charset="utf-8">
+	<!-- set the viewport width and initial-scale on mobile devices -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- set the price table -->
+	<meta name="Petshop" content="yes">
+	<!-- set the HandheldFriendly -->
+	<meta name="HandheldFriendly" content="True">
+	<!-- set the price table style -->
+	<meta name="Petshop" content="black">
+	<!-- set the description -->
+	<meta name="description" content="Petshop">
+	<title></title>
+	<!-- include the site stylesheet -->
+	<link href="https://fonts.googleapis.com/css?family=Dosis:400,500,600%7CNunito:400,600,700" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/icon-fonts.css">
+	<link rel="stylesheet" type="text/css" href="css/plugins.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div id="wrapper">
+		<header id="header" th:replace="index::#header">		
+		</header>
+		<main id="main">
+			<section class="hero-sec bg-full" style="background-image:url(images/img33.jpg);">
+				<div class="caption">
+					<h1 class="heading text-center">照片墙</h1>
+				</div>
+			</section>
+			<section class="gallery-sec container style1">
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="image-holder overlay">
+							<img src="images/img17.jpg" alt="image" class="img-responsive">
+							<a href="#" class="icon lg-round text-center"><i class="fa fa-search" aria-hidden="true"></i></a>
+						</div>
+						<div class="image-holder overlay">
+							<img src="images/img18.jpg" alt="image" class="img-responsive">
+							<a href="#" class="icon lg-round text-center"><i class="fa fa-search" aria-hidden="true"></i></a>
+						</div>
+						<div class="image-holder overlay">
+							<img src="images/img19.jpg" alt="image" class="img-responsive">
+							<a href="#" class="icon lg-round text-center"><i class="fa fa-search" aria-hidden="true"></i></a>
+						</div>
+						<div class="image-holder overlay">
+							<img src="images/img20.jpg" alt="image" class="img-responsive">
+							<a href="#" class="icon lg-round text-center"><i class="fa fa-search" aria-hidden="true"></i></a>
+						</div>
+						<div class="image-holder overlay">
+							<img src="images/img21.jpg" alt="image" class="img-responsive">
+							<a href="#" class="icon lg-round text-center"><i class="fa fa-search" aria-hidden="true"></i></a>
+						</div>
+						<div class="image-holder overlay mar">
+							<img src="images/img37.jpg" alt="image" class="img-responsive">
+							<a href="#" class="icon lg-round text-center"><i class="fa fa-search" aria-hidden="true"></i></a>
+						</div>
+						<div class="image-holder overlay img-col">
+							<img src="images/img38.jpg" alt="image" class="img-responsive">
+							<a href="#" class="icon lg-round text-center"><i class="fa fa-search" aria-hidden="true"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12">
+						 <ul class="pagination list-unstyled text-center">
+						 	<li><a href="#"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a></li>
+							<li><a href="#">1</a></li>
+							<li><a class="active" href="#">2</a></li>
+							<li><a href="#">3</a></li>
+						</ul>
+					</div>
+				</div>
+			</section>
+			<section class="callout" style="background-image:url(images/img26.jpg);">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-6">
+							<h2>获得所有宠物产品的50%的报价</h2>
+						</div>
+						<div class="col-xs-12 col-sm-6">
+							<a class="btn-primary text-uppercase text-center lg-round" href="#">优惠价代码 : PETTY1234</a>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+		<footer id="footer" th:replace="index::#footer">
+		</footer>
+	</div>
+	<script src="js/jquery.js"></script>
+	<script src="js/plugins.js"></script>
+	<script src="js/jquery.main.js"></script>
+</body>
+</html>

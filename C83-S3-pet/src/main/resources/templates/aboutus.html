@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="www.thymeleaf.org">
+<head>
+	<!-- set the encoding of your site -->
+	<meta charset="utf-8">
+	<!-- set the viewport width and initial-scale on mobile devices -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- set the price table -->
+	<meta name="Petshop" content="yes">
+	<!-- set the HandheldFriendly -->
+	<meta name="HandheldFriendly" content="True">
+	<!-- set the price table style -->
+	<meta name="Petshop" content="black">
+	<!-- set the description -->
+	<meta name="description" content="">
+	<title></title>
+	<!-- include the site stylesheet -->
+	<link href="https://fonts.googleapis.com/css?family=Dosis:400,500,600%7CNunito:400,600,700" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/icon-fonts.css">
+	<link rel="stylesheet" type="text/css" href="css/plugins.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div id="wrapper">
+		<header id="header" th:replace="index::#header">		
+		</header>
+		<main id="main">
+			<section class="hero-sec bg-full" style="background-image:url(images/img33.jpg);">
+				<div class="caption">
+					<h1 class="heading text-center">关于我们</h1>
+				</div>
+			</section>
+			<section class="abt-sec container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-7">
+						<header class="header text-center">
+							<h2 class="heading text-uppercase">welcome to petty</h2>
+							<span class="icon"><i class="icon-bone"></i></span>
+							<p class="text-center">petty宠物店（pet shop）是专门为宠物提供宠物用品零售、宠物美容、宠物寄养、宠物活体销售的场所。其经营项目一般包括宠物用品超市、活体销售、宠物美容、宠物寄养、宠物医疗、宠物乐园、宠物摄影、待产养护。有时宠物店又等同于宠物用品店、宠物美容店、宠物寄存、宠物医院、宠物驯养等。</p>
+						</header>
+						<ul class="list-unstyled icon-list text-center">
+							<li><span class="icon round"><i class="icon-money"></i></span><h3 class="heading2">活动价</h3></li>
+							<li><span class="icon round"><i class="icon-atom"></i></span><h3 class="heading2">优质宠</h3></li>
+							<li><span class="icon round"><i class="icon-smile"></i></span><h3 class="heading2">幸福人</h3></li>
+						</ul>
+					</div>
+					<div class="col-xs-12 col-sm-5">
+						<div class="img-holder"><img src="images/img02.jpg" alt="pet-image" class="img-responsive"></div>
+					</div>
+				</div>
+			</section>
+			<section class="team-sec container">
+				<div class="row">
+					<header class="col-xs-12 header text-center">
+						<h1 class="heading text-uppercase">our team</h1>
+						<span class="icon"><i class="icon-bone"></i></span>
+					</header>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-4">
+						<div class="team-holder text-center">
+							<div class="img-holder">
+								<img class="img-responsive" src="images/img34.jpg" alt="image">
+								<ul class="list-unstyled socail-network">
+									<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+								</ul>
+							</div>
+							<h4>Jessie Bell</h4>
+							<span class="designation">Care Taker</span>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-4">
+						<div class="team-holder text-center">
+							<div class="img-holder">
+								<img class="img-responsive" src="images/img35.jpg" alt="image">
+								<ul class="list-unstyled socail-network">
+									<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+								</ul>
+							</div>
+							<h4>Mark Antony</h4>
+							<span class="designation">Dog Trainer</span>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-4">
+						<div class="team-holder text-center">
+							<div class="img-holder">
+								<img class="img-responsive" src="images/img36.jpg" alt="image">
+								<ul class="list-unstyled socail-network">
+									<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+								</ul>
+							</div>
+							<h4>Angelina</h4>
+							<span class="designation">Pet Adopter</span>
+						</div>
+					</div>
+				</div>
+				</section>
+			<section class="callout" style="background-image:url(images/img26.jpg);">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-6">
+							<h2>获得所有宠物产品的50%的报价</h2>
+						</div>
+						<div class="col-xs-12 col-sm-6">
+							<a class="btn-primary text-uppercase text-center lg-round" href="#">优惠价代码 : PETTY1234</a>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+		<footer id="footer" th:replace="index::#footer">
+		</footer>
+	</div>
+	<script src="js/jquery.js"></script>
+	<script src="js/plugins.js"></script>
+	<script src="js/jquery.main.js"></script>
+</body>
+</html>

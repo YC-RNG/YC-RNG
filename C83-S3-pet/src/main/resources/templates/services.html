@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="www.thymeleaf.org">
+<head>
+	<!-- set the encoding of your site -->
+	<meta charset="utf-8">
+	<!-- set the viewport width and initial-scale on mobile devices -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- set the price table -->
+	<meta name="Petshop" content="yes">
+	<!-- set the HandheldFriendly -->
+	<meta name="HandheldFriendly" content="True">
+	<!-- set the price table style -->
+	<meta name="Petshop" content="black">
+	<!-- set the description -->
+	<meta name="description" content="Petshop">
+	<title></title>
+	<!-- include the site stylesheet -->
+	<link href="https://fonts.googleapis.com/css?family=Dosis:400,500,600%7CNunito:400,600,700" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/icon-fonts.css">
+	<link rel="stylesheet" type="text/css" href="css/plugins.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div id="wrapper">
+		<header id="header" th:replace="index::#header">
+		</header>
+		<main id="main">
+			<section class="hero-sec bg-full" style="background-image:url(images/img33.jpg);">
+				<div class="caption">
+					<h1 class="heading text-center">服务</h1>
+				</div>
+			</section>
+			<section class="feature-sec container style2">
+				<div class="row">
+					<header class="col-xs-12 header text-center">
+						<h2 class="heading text-uppercase">why choose us</h2>
+						<span class="icon"><i class="icon-bone"></i></span>
+					</header>
+				</div>
+				<div class="row">
+						<div class="col-xs-12 col-sm-4">
+							<div class="feature-col">
+								<span class="icon round"><i class="icon-bookmark"></i></span>
+								<h3 class="heading2">质量&amp;关怀</h3>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-4">
+							<div class="feature-col">
+								<span class="icon round"><i class="icon-shield"></i></span>
+								<h3 class="heading2">保障 &amp; 检测</h3>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-4">
+							<div class="feature-col">
+								<span class="icon round"><i class="icon-home"></i></span>
+								<h3 class="heading2">免费咨询</h3>
+							</div>
+						</div>
+					</div>
+			</section>
+			<section class="services-sec bg-full" style="background-image:url(images/img03.jpg);">
+				<div class="container">
+					<div class="row">
+						<header class="col-xs-12 header text-center">
+							<h2 class="heading text-uppercase">what we do</h2>
+							<span class="icon"><i class="icon-bone"></i></span>
+						</header>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 col-sm-6">
+							<div class="services-holder">
+								<div class="img-holder"><img src="images/img04.jpg" alt="Pet Adoption" class="img-responsive"></div>
+								<div class="txt-holder">
+									<h3 class="heading2">宠物收容所</h3>
+									<p>每只狗狗都在那里等待着新的家长来带自己回家，过上温暖有爱的生活。也许收容所是很多狗狗被遗弃噩梦开始的地方，但同样也是幸福开始的地方...</p>
+									<a class="read-more text-uppercase" href="javascript:void(0);">更多详情 <i class="icon-next"></i></a>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6">
+							<div class="services-holder">
+								<div class="img-holder"><img src="images/img05.jpg" alt="Pet Grooming" class="img-responsive"></div>
+								<div class="txt-holder">
+									<h3 class="heading2">宠物护理</h3>
+									<p>宠物医院每周都会挑选一名志愿者来护理刚出生不久的小宠物们。别看它们很可爱，都是有自己小脾气的，只要你在它们闹脾气之前完成要求就相安无事了...</p>
+									<a class="read-more text-uppercase" href="javascript:void(0);">更多详情 <i class="icon-next"></i></a>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6">
+							<div class="services-holder">
+								<div class="img-holder"><img src="images/img06.jpg" alt="Pet Daycare" class="img-responsive"></div>
+								<div class="txt-holder">
+									<h3 class="heading2">宠物日常</h3>
+									<p>狗儿与人类勾通主要靠眼睛，狗儿如果眼睛不舒服就要用爪子抓，因此很容易损伤眼睛和角膜，由其是眼睛突出的北京狗。眼内的变化都是身体某部份疾病的反映。所以定期检查和管理狗儿的眼睛有利于防病...</p>
+									<a class="read-more text-uppercase" href="javascript:void(0);">更多详情 <i class="icon-next"></i></a>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6">
+							<div class="services-holder">
+								<div class="img-holder"><img src="images/img07.jpg" alt="Dog Training" class="img-responsive"></div>
+								<div class="txt-holder">
+									<h3 class="heading2">宠物训练</h3>
+									<p>让狗狗学会如何在家独处，不乱吠叫，不破坏家具，不随地大小便，出门时走在主人身边，对陌生人和陌生狗狗友好，如何接待来到家里的客人等等，这些日常生活中都会出现和遇到的行为，如何让狗狗知道...</p>
+									<a class="read-more text-uppercase" href="javascript:void(0);">更多详情 <i class="icon-next"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="appointment-sec container">
+				<div class="row">
+					<header class="col-xs-12 header text-center">
+						<h2 class="heading text-uppercase">申请预约</h2>
+						<span class="icon"><i class="icon-bone"></i></span>
+					</header>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-md-10 col-md-offset-1">
+						<form class="appointment-form text-center" action="#">
+							<fieldset>
+								<div class="form-group">
+									<div class="col">
+										<input class="form-control" placeholder="Name" type="text">
+									</div>
+									<div class="col">
+										<input class="form-control" placeholder="Date" type="text">
+										<span class="icon icon-calendar"></span>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col">
+										<input class="form-control" placeholder="Pet Type" type="text">
+										<span class="icon fa fa-paw"></span>
+									</div>
+									<div class="col">
+										<input class="form-control" placeholder="Email" type="email">
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col">
+										<input class="form-control" placeholder="Time" type="text">
+										<span class="icon icon-clock"></span>
+									</div>
+									<div class="col">
+										<select class="form-control">
+											<option value="0">Service we offered</option>
+											<option value="1">Service we offered</option>
+											<option value="2">Service we offered</option>
+										</select>
+									</div>
+								</div>
+								<button class="btn-primary text-center text-uppercase" type="submit">提交</button>
+							</fieldset>
+						</form>
+					</div>
+				</div>
+			</section>
+			<section class="callout" style="background-image:url(images/img26.jpg);">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-6">
+							<h2>获得所有宠物产品的50%的报价</h2>
+						</div>
+						<div class="col-xs-12 col-sm-6">
+							<a class="btn-primary text-uppercase text-center lg-round" href="#">优惠价代码 : PETTY1234</a>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+		<footer id="footer" th:replace="index::#footer">
+		</footer>
+	</div>
+	<script src="js/jquery.js"></script>
+	<script src="js/plugins.js"></script>
+	<script src="js/jquery.main.js"></script>
+</body>
+</html>
