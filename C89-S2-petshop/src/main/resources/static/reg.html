@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="www.thymeleaf.org">
 <head>
 	<!-- set the encoding of your site -->
 	<meta charset="utf-8">
@@ -11,8 +12,8 @@
 	<!-- set the price table style -->
 	<meta name="Petshop" content="black">
 	<!-- set the description -->
-	<meta name="description" content="Petshop">
-	<title>Petshop</title>
+	<meta name="description" content="">
+	<title></title>
 	<!-- include the site stylesheet -->
 	<link href="https://fonts.googleapis.com/css?family=Dosis:400,500,600%7CNunito:400,600,700" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
@@ -23,6 +24,16 @@
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<script
 		src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
+	<script type="text/javascript">
+		function checkImg(){
+		// 更新验证码
+		}
+	</script>
+	<style type="text/css">
+	.e{
+		color:red
+	}
+</style>
 </head>
 <body>
 	<div id="wrapper">
@@ -117,160 +128,69 @@
 				</div>
 			</div>
 		</header>
-		<main id="main">
+				<main id="main">
 			<section class="hero-sec bg-full" style="background-image:url(images/img33.jpg);">
 				<div class="caption">
-					<h1 class="heading text-center">商店</h1>
+					<h1 class="heading text-center">注册</h1>
 				</div>
 			</section>
-			<section class="shop-sec style1 container">
+			<section class="check-sec container">
 				<div class="row">
 					<div class="col-xs-12">
-						<article id="content">
-						
-						
-						<!-- 商品展示窗口 -->
-							<div id="hotpet" class="product-block" >
-							
-								<div v-for="pet in plist" class="product-col">
-									<div class="img-holder">
-										<img :src="pet.image" alt="food-img" class="img-responsive">
-										<span class="sale-item">热卖中！</span>
-										<div class="over-holder">
-											<ul class="list-unstyled text-center share-list">
-												<li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
-												<li><a href="#"><i class="icon-refresh"></i></a></li>
-												<li><a :href="'shop-detail.html#'+pet.pid"><i class="fa fa-search" aria-hidden="true"></i></a></li>
-											</ul>
+						<form class="checkout-form text-left" action="reg1.do" method="post">
+							<fieldset>
+								<div class="row">
+									<div class="col-xs-12 col-sm-6">
+										<h2>用户信息</h2>
+										<div class="form-group">		
+											<label>账号 <span class="sign">*</span></label>
+											<span class="e" th:if="${errors}!=null" th:text="${errors.get('account')}"> </span><br>
+											<input class="form-control " placeholder="" type="text"
+											 name="account" th:value="${user}!=null ? ${user.account} : ''">
+											
+											<label>昵称<span class="sign">*</span></label>
+											<span class="e" th:if="${errors}!=null" th:text="${errors.get('username')}"></span><br>
+											<input class="form-control " placeholder="" type="text"
+											name="username" th:value="${user}!=null ? ${user.username} : ''">
+																				
+											<label>密码<span class="sign">*</span></label>
+											<span class="e" th:if="${errors}!=null" th:text="${errors.get('password')}"></span><br>
+											<input class="form-control " placeholder="" type="text"
+											name="password" th:value="${user}!=null ? ${user.password} : ''">
+											
+											<label>性别<span class="sign"></span></label>
+											<span class="e" th:if="${errors}!=null" th:text="${errors.get('sex')}"></span><br>
+											<input class="form-control " placeholder="" type="text"
+											name="sex" th:value="${user}!=null ? ${user.sex} : ''">
+											
+											<label>地址<span class="sign">*</span></label>
+											<span class="e" th:if="${errors}!=null" th:text="${errors.get('addr')}"></span><br>
+											<input class="form-control" placeholder="" type="text"
+											name="addr" th:value="${user}!=null ? ${user.addr} : ''">
+											
+											
+											<label>电话<span class="sign">*</span></label>
+											<span class="e" th:if="${errors}!=null" th:text="${errors.get('phone')}"></span><br>
+											<input class="form-control" placeholder="" type="text"
+											name="phone" th:value="${user}!=null ? ${user.phone} : ''">
+											
+											<button>提交</button>
 										</div>
 									</div>
-									<div class="descrip">
-										<h3 class="heading2">{{pet.pname}}</h3> 
-										<span class="price">{{pet.price}}</span>		
-									</div>
-									<div class="text-center">
-										<a href="shop-detail.html" class="btn-primary lg-round text-uppercase"><i class="icon-cart"></i>加入购物车</a>
-									</div>
-									
 								</div>
-							</div>
-							<script type="text/javascript">
-								var vue = new Vue({
-									el:"#hotpet",
-									data:{
-										plist:[]
-									},
-									created(){
-										axios.get("queryHotPet").then(res=>{
-											this.plist = res.data;
-										})
-									}
-								})
-								</script>
-							<ul class="pagination list-unstyled text-center">
-								<li><a href="#"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a></li>
-								<li><a class="active" href="#">1</a></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-							</ul>
-						</article>
-						<aside id="sidebar">
-							<section class="widget">
-								<h3>Filter</h3>
-								<form action="#" class="filter-ranger-form">
-									<div id="slider-range"></div>
-									<input type="hidden" id="amount1" name="amount1">
-									<input type="hidden" id="amount2" name="amount2">
-									<div class="get-results-wrap">
-										<button type="button" class="btn btn-default text-uppercase">Filter</button>
-										<p id="amount" class="font-lato"></p>
-									</div>
-								</form>
-							</section>
-							<section class="widget">
-								<h3>Categories</h3>
-								<ul class="list-unstyled category-list">
-									<li><a href="#"><span class="icon fa fa-angle-right"></span>Dogs [30]</a></li>
-									<li><a href="#"><span class="icon fa fa-angle-right"></span>Cats [46]</a></li>
-									<li><a href="#"><span class="icon fa fa-angle-right"></span>Birds [58]</a></li>
-									<li><a href="#"><span class="icon fa fa-angle-right"></span>Cages [20]</a></li>
-									<li><a href="#"><span class="icon fa fa-angle-right"></span>Foods [62]</a></li>
-								</ul>
-							</section>
-							<section class="widget">
-								<h3>Featured Products</h3>
-								<ul class="list-unstyled feature-list">
-									<li>
-										<div class="img-holder">
-											<a href="shop-detail.html"><img class="img-responsive" src="images/img40.jpg" alt="image"></a>
-										</div>
-										<div class="txt-holder">
-											<ul class="list-unstyled rating-list">
-												<li><a href="#" class="fa fa-star-o"></a></li>
-												<li><a href="#" class="fa fa-star-o"></a></li>
-												<li><a href="#" class="fa fa-star-o"></a></li>
-												<li><a href="#" class="fa fa-star-o"></a></li>
-												<li><a href="#" class="fa fa-star-o"></a></li>
-											</ul>
-											<h3><a href="shop-detail.html">Premier Pet+ for Dogs</a></h3>
-											<span class="price">$30.00</span>
-										</div>
-									</li>
-									<li>
-										<div class="img-holder">
-											<a href="shop-detail.html"><img class="img-responsive" src="images/img41.jpg" alt="image"></a>
-										</div>
-										<div class="txt-holder">
-											<ul class="list-unstyled rating-list">
-												<li><a href="#" class="fa fa-star-o"></a></li>
-												<li><a href="#" class="fa fa-star-o"></a></li>
-												<li><a href="#" class="fa fa-star-o"></a></li>
-												<li><a href="#" class="fa fa-star-o"></a></li>
-												<li><a href="#" class="fa fa-star-o"></a></li>
-											</ul>
-											<h3><a href="shop-detail.html">Nutri-Pooch Vitamin+</a></h3>
-											<span class="price">$30.00</span>
-										</div>
-									</li>
-									<li>
-										<div class="img-holder">
-											<a href="shop-detail.html"><img class="img-responsive" src="images/img42.jpg" alt="image"></a>
-										</div>
-										<div class="txt-holder">
-											<ul class="list-unstyled rating-list">
-												<li><a href="#" class="fa fa-star-o"></a></li>
-												<li><a href="#" class="fa fa-star-o"></a></li>
-												<li><a href="#" class="fa fa-star-o"></a></li>
-												<li><a href="#" class="fa fa-star-o"></a></li>
-												<li><a href="#" class="fa fa-star-o"></a></li>
-											</ul>
-											<h3><a href="shop-detail.html">Joint Support for Cats</a></h3>
-											<span class="price">$30.00</span>
-										</div>
-									</li>
-								</ul>
-							</section>
-							<section class="widget">
-								<h3>Search Products</h3>
-								<form class="search-form" action="#">
-									<fieldset>
-										<input class="form-control" placeholder="Search...." type="search">
-										<button class="submit-btn" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-									</fieldset>
-								</form>
-							</section>
-						</aside>
+							</fieldset>
+						</form>
 					</div>
 				</div>
 			</section>
-			<section class="callout" style="background-image:url(images/img26.jpg);">
+<section class="callout" style="background-image:url(images/img26.jpg);">
 				<div class="container">
 					<div class="row">
 						<div class="col-xs-12 col-sm-6">
-							<h2>Get 50% offer for all pet products</h2>
+							<h2>获得所有宠物产品的50%的报价</h2>
 						</div>
 						<div class="col-xs-12 col-sm-6">
-							<a class="btn-primary text-uppercase text-center lg-round" href="#">coupon code : PETTY1234</a>
+							<a class="btn-primary text-uppercase text-center lg-round" href="#">优惠价代码 : PETTY1234</a>
 						</div>
 					</div>
 				</div>
@@ -327,8 +247,5 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/jquery.js"></script>
-	<script src="js/plugins.js"></script>
-	<script src="js/jquery.main.js"></script>
 </body>
 </html>

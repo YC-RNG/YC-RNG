@@ -13,21 +13,33 @@ import yc.rng.pet.bean.Pets;
 public class PetDao extends BaseDao{
 	
 	/**
-	 * 查询热卖
+	 * 展示首页商品
 	 * @return
 	 */
 	public List<Pets> selectPetHot(){
-		
-		return jt.query(sql, rowMapper);
+		String sql = "select * from pets where pid limit 0,9";
+		return jt.query(sql, petRowMapper);
 	}
 	
+	
+	
+	
+	/**
+	 * rowMapper
+	 */
 	private RowMapper<Pets> petRowMapper = new RowMapper<Pets>() {
 
 		@Override
 		public Pets mapRow(ResultSet rs, int rowNum) throws SQLException {
 			Pets pet = new Pets();
-			pet.set
-			return null;
+			pet.setPid(rs.getInt("pid"));
+			pet.setPname(rs.getString("pname"));
+			pet.setPrice(rs.getDouble("price"));
+			pet.setState(rs.getInt("state"));
+			pet.setImage(rs.getString("image"));
+			pet.setPdesc(rs.getString("pdesc"));
+			pet.setCid(rs.getInt("cid"));
+			return pet;
 		}};
 
 }

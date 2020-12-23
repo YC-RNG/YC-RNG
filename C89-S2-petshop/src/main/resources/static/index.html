@@ -20,6 +20,14 @@
 	<link rel="stylesheet" type="text/css" href="css/icon-fonts.css">
 	<link rel="stylesheet" type="text/css" href="css/plugins.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script
+		src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
+	<script type="text/javascript">
+		function checkImg(){
+		// 更新验证码
+		}
+	</script>
 </head>
 <body>
 	<div id="wrapper">
@@ -28,8 +36,8 @@
 				<div class="row">
 					<div class="col-xs-12 hidden visible-xs">
 						<ul class="list-unstyled social-network text-center">
-							<li><a href="mailto:petty@support.com"><i class="icon-message" aria-hidden="true"></i></a></li>
-							<li><a href="tell:1345678000"><i class="icon-phone-call" aria-hidden="true"></i></a></li>
+							<li><a href="mailto:792602334@qq.com"><i class="icon-message" aria-hidden="true"></i></a></li>
+							<li><a href="tell:15580361233"><i class="icon-phone-call" aria-hidden="true"></i></a></li>
 							<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
 							<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
 							<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
@@ -43,14 +51,14 @@
 								<a href="mailto:petty@support.com" class="icon pull-left"><i class="icon-message"></i></a>
 								<div class="align-left pull-left hidden-xs">
 									<strong>Mail us:</strong>
-									<a href="mailto:petty@support.com">petty@support.com</a>
+									<a href="mailto:792602334@qq.com">792602334@qq.com</a>
 								</div>
 							</li>
 							<li>
-								<a href="tell:1345678000" class="icon pull-left"><i class="icon-phone-call"></i></a>
+								<a href="tell:15580361233" class="icon pull-left"><i class="icon-phone-call"></i></a>
 								<div class="align-left pull-left hidden-xs">
 									<strong>Call us:</strong>
-									<a href="tell:1345678000">(+1) 345 678 000</a>
+									<a href="tell:15580361233">(+86) 15580361233</a>
 								</div>
 							</li>
 						</ul>
@@ -63,8 +71,9 @@
 								<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
 							</ul>
 							<ul class="list-unstyled account-cart">
-								<li><a href="#"><i class="icon-user"></i><span class="hidden-xs">Account</span></a></li>
-								<li><a href="#"><i class="icon-cart"></i><span class="hidden-xs">Cart</span></a></li>
+							
+								<li><a href="login.html"><i class="icon-user"></i><span class="hidden-xs">登录/注册</span></a></li>
+								<li><a href="#"><i class="icon-cart"></i><span class="hidden-xs">购物车</span></a></li>
 							</ul>
 						</div>
 					</div>
@@ -79,34 +88,34 @@
 						<a href="#" class="nav-opener pull-right hidden visible-xs"><i class="fa fa-bars"></i></a>
 						<nav id="nav">
 							<ul class="list-unstyled text-uppercase menu-left">
-								<li><a href="index.html">home</a></li>
+								<li><a href="index.html">首页</a></li>
 								<li>
-									<a href="javascript:void(0);">pages <i class="fa fa-angle-down"></i></a>
+									<a href="javascript:void(0);">在线服务页 <i class="fa fa-angle-down"></i></a>
 									<ul class="list-unstyled text-uppercase dropdown">
-										<li><a href="services.html">services</a></li>
-										<li><a href="aboutus.html">about us</a></li>
-										<li><a href="gallery.html">Gallery</a></li>
-										<li><a href="404page.html">404 page</a></li>
+										<li><a href="services.html">服务</a></li>
+										<li><a href="aboutus.html">关于我们</a></li>
+										<li><a href="gallery.html">照片墙</a></li>
+										<li><a href="404page.html">404 页面</a></li>
 									</ul>
 								</li>
 								<li>
-									<a href="javascript:void(0);">shop <i class="fa fa-angle-down"></i></a>
+									<a href="javascript:void(0);">商店页 <i class="fa fa-angle-down"></i></a>
 									<ul class="list-unstyled text-uppercase dropdown">
-										<li><a href="shop.html">Shop</a></li>
-										<li><a href="shop-detail.html">Shop Detail</a></li>
-										<li><a href="cart.html">Cart</a></li>
-										<li><a href="checkout.html">Checkout</a></li>
+										<li><a href="shop.html">商店</a></li>
+										<li><a href="shop-detail.html">商品详情</a></li>
+										<li><a href="cart.html">购物车</a></li>
+										<li><a href="checkout.html">结算</a></li>
 									</ul>
 								</li>
 								<li class="logo hidden-xs"><a href="index.html"><img class="img-responsive" src="images/logo.png" alt="PetShop"></a></li>
 								<li class="mar-zero">
-									<a href="javascript:void(0);">blog</a>
+									<a href="javascript:void(0);">博客</a>
 									<ul class="list-unstyled text-uppercase dropdown">
-										<li><a href="single-blog.html">Blog Standard</a></li>
-										<li><a href="single-blog.html">Single Blog</a></li>
+										<li><a href="single-blog.html">热点话题</a></li>
+										<li><a href="single-blog.html">发布文章</a></li>
 									</ul>
 								</li>
-								<li><a href="contact-us.html">contact us</a></li>
+								<li><a href="contact-us.html">联系我们</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -526,25 +535,25 @@
 						<div class="footer-logo">
 							<a href="#"><img src="images/footer-logo.png" alt="Pet Shop" class="img-responsive"></a>
 						</div>
-						<p>It is a long established fact that a reader <br class="hidden-xs">distracted by the readable content</p>
+						<p>你给我们信任，我们给它关爱。</p>
 						<ul class="contact-list list-unstyled">
-							<li><span class="icon"><i class="fa fa-map-signs" aria-hidden="true"></i></span> No: 801, petty shop, Australia.</li>
-							<li><a href=""><span class="icon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>pettyshop@mail.com</a></li>
-							<li><a href="#"><span class="icon"><i class="fa fa-phone" aria-hidden="true"></i></span> (+23) 900 8990 000 </a></li>
+							<li><span class="icon"><i class="fa fa-map-signs" aria-hidden="true"></i></span> No: 801, petty 商店, 湖南省衡阳市.</li>
+							<li><a href=""><span class="icon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>792602334@qq.com</a></li>
+							<li><a href="#"><span class="icon"><i class="fa fa-phone" aria-hidden="true"></i></span> (+86) 15580361233 </a></li>
 						</ul>
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-2">
-						<h3>Information</h3>
+						<h3>宠物信息</h3>
 						<ul class="info-list list-unstyled">
-							<li><a href="#"><span class="icon"><i class="fa fa-angle-right" aria-hidden="true"></i></span>Pet Adoption</a></li>
-							<li><a href="#"><span class="icon"><i class="fa fa-angle-right" aria-hidden="true"></i></span>Active Dogs</a></li>
-							<li><a href="#"><span class="icon"><i class="fa fa-angle-right" aria-hidden="true"></i></span>Pet Daycare</a></li>
-							<li><a href="#"><span class="icon"><i class="fa fa-angle-right" aria-hidden="true"></i></span>Dog Training</a></li>
-							<li><a href="#"><span class="icon"><i class="fa fa-angle-right" aria-hidden="true"></i></span>Pet Helpcare</a></li>
+							<li><a href="#"><span class="icon"><i class="fa fa-angle-right" aria-hidden="true"></i></span>宠物收容所</a></li>
+							<li><a href="#"><span class="icon"><i class="fa fa-angle-right" aria-hidden="true"></i></span>快乐的宠物</a></li>
+							<li><a href="#"><span class="icon"><i class="fa fa-angle-right" aria-hidden="true"></i></span>宠物日常护理</a></li>
+							<li><a href="#"><span class="icon"><i class="fa fa-angle-right" aria-hidden="true"></i></span>宠物训练</a></li>
+							<li><a href="#"><span class="icon"><i class="fa fa-angle-right" aria-hidden="true"></i></span>帮助宠物</a></li>
 						</ul>
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-3">
-						<h3>Instagram</h3>
+						<h3>照片墙</h3>
 						<ul class="insta-list list-unstyled">
 							<li><a href="#"><img src="images/img27.jpg" alt="footer-img" class="img-responsive"></a></li>
 							<li><a href="#"><img src="images/img28.jpg" alt="footer-img" class="img-responsive"></a></li>
@@ -555,9 +564,9 @@
 						</ul>
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-3">
-						<h3>Newsletter</h3>
+						<h3>电子邮件</h3>
 						<div class="newsletter">
-							<p>It is a long established fact that a by <br class="hidden-xs">the readable content</p>
+							<p>欢迎联系我们！！！</p>
 							<form class="newsletter-form" action="#">
 								<fieldset>
 									<input class="form-control" placeholder="Email" type="email">
