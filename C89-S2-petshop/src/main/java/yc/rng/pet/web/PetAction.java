@@ -16,11 +16,22 @@ public class PetAction {
 	@Resource
 	private PetDao petdao;
 	
+	/**
+	 * 查询热卖商品
+	 * @return
+	 */
 	@RequestMapping("queryHotPet")
 	public List<Pets> queryHotPet(){
 		return petdao.selectPetHot();
-		
+	}
+	@RequestMapping("queryHotPet2")
+	public List<Pets> queryHotPet2(){
+		return petdao.selectPetHot2();
 	}
 	
+	@RequestMapping("queryById")
+	public Pets queryById(int pid) {
+		return petdao.selectById(pid);
+	}
 
 }

@@ -20,6 +20,8 @@
 	<link rel="stylesheet" type="text/css" href="css/icon-fonts.css">
 	<link rel="stylesheet" type="text/css" href="css/plugins.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
 </head>
 <body>
 	<div id="wrapper">
@@ -28,8 +30,8 @@
 				<div class="row">
 					<div class="col-xs-12 hidden visible-xs">
 						<ul class="list-unstyled social-network text-center">
-							<li><a href="mailto:petty@support.com"><i class="icon-message" aria-hidden="true"></i></a></li>
-							<li><a href="tell:1345678000"><i class="icon-phone-call" aria-hidden="true"></i></a></li>
+							<li><a href="mailto:792602334@qq.com"><i class="icon-message" aria-hidden="true"></i></a></li>
+							<li><a href="tell:15580361233"><i class="icon-phone-call" aria-hidden="true"></i></a></li>
 							<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
 							<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
 							<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
@@ -43,14 +45,14 @@
 								<a href="mailto:petty@support.com" class="icon pull-left"><i class="icon-message"></i></a>
 								<div class="align-left pull-left hidden-xs">
 									<strong>Mail us:</strong>
-									<a href="mailto:petty@support.com">petty@support.com</a>
+									<a href="mailto:792602334@qq.com">792602334@qq.com</a>
 								</div>
 							</li>
 							<li>
-								<a href="tell:1345678000" class="icon pull-left"><i class="icon-phone-call"></i></a>
+								<a href="tell:15580361233" class="icon pull-left"><i class="icon-phone-call"></i></a>
 								<div class="align-left pull-left hidden-xs">
 									<strong>Call us:</strong>
-									<a href="tell:1345678000">(+1) 345 678 000</a>
+									<a href="tell:15580361233">(+86) 15580361233</a>
 								</div>
 							</li>
 						</ul>
@@ -63,8 +65,9 @@
 								<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
 							</ul>
 							<ul class="list-unstyled account-cart">
-								<li><a href="#"><i class="icon-user"></i><span class="hidden-xs">Account</span></a></li>
-								<li><a href="#"><i class="icon-cart"></i><span class="hidden-xs">Cart</span></a></li>
+							
+								<li><a href="login.html"><i class="icon-user"></i><span class="hidden-xs">登录/注册</span></a></li>
+								<li><a href="#"><i class="icon-cart"></i><span class="hidden-xs">购物车</span></a></li>
 							</ul>
 						</div>
 					</div>
@@ -79,34 +82,34 @@
 						<a href="#" class="nav-opener pull-right hidden visible-xs"><i class="fa fa-bars"></i></a>
 						<nav id="nav">
 							<ul class="list-unstyled text-uppercase menu-left">
-								<li><a href="index.html">home</a></li>
+								<li><a href="index.html">首页</a></li>
 								<li>
-									<a href="javascript:void(0);">pages <i class="fa fa-angle-down"></i></a>
+									<a href="javascript:void(0);">在线服务页 <i class="fa fa-angle-down"></i></a>
 									<ul class="list-unstyled text-uppercase dropdown">
-										<li><a href="services.html">services</a></li>
-										<li><a href="aboutus.html">about us</a></li>
-										<li><a href="gallery.html">Gallery</a></li>
-										<li><a href="404page.html">404 page</a></li>
+										<li><a href="services.html">服务</a></li>
+										<li><a href="aboutus.html">关于我们</a></li>
+										<li><a href="gallery.html">照片墙</a></li>
+										<li><a href="404page.html">404 页面</a></li>
 									</ul>
 								</li>
 								<li>
-									<a href="javascript:void(0);">shop <i class="fa fa-angle-down"></i></a>
+									<a href="javascript:void(0);">商店页 <i class="fa fa-angle-down"></i></a>
 									<ul class="list-unstyled text-uppercase dropdown">
-										<li><a href="shop.html">Shop</a></li>
-										<li><a href="shop-detail.html">Shop Detail</a></li>
-										<li><a href="cart.html">Cart</a></li>
-										<li><a href="checkout.html">Checkout</a></li>
+										<li><a href="shop.html">商店</a></li>
+										<li><a href="shop-detail.html">商品详情</a></li>
+										<li><a href="cart.html">购物车</a></li>
+										<li><a href="checkout.html">结算</a></li>
 									</ul>
 								</li>
 								<li class="logo hidden-xs"><a href="index.html"><img class="img-responsive" src="images/logo.png" alt="PetShop"></a></li>
 								<li class="mar-zero">
-									<a href="javascript:void(0);">blog</a>
+									<a href="javascript:void(0);">博客</a>
 									<ul class="list-unstyled text-uppercase dropdown">
-										<li><a href="single-blog.html">Blog Standard</a></li>
-										<li><a href="single-blog.html">Single Blog</a></li>
+										<li><a href="single-blog.html">热点话题</a></li>
+										<li><a href="single-blog.html">发布文章</a></li>
 									</ul>
 								</li>
-								<li><a href="contact-us.html">contact us</a></li>
+								<li><a href="contact-us.html">联系我们</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -116,35 +119,35 @@
 		<main id="main">
 			<section class="hero-sec bg-full" style="background-image:url(images/img33.jpg);">
 				<div class="caption">
-					<h1 class="heading text-center">Shop</h1>
+					<h1 class="heading text-center">商品详情</h1>
 				</div>
 			</section>
 			<section class="shop-sec detail-page container">
 				<div class="row">
 					<div class="col-xs-12">
+					
 						<article id="content">
 							<div class="holder">
 								<div class="block">
 									<div class="product-slider">
 										<div class="slide">
-											<img src="images/img44.jpg" alt="image" class="img-responsive">
+											<img :src="pet.image" alt="image" class="img-responsive">
 										</div>
 									</div>
-									<ul class="list-unstyled slick-slider pagg-slider">
-							            <li><img src="images/img45.jpg" alt="image description"></li>
-							        	<li><img src="images/img46.png" alt="image description"></li>
-							        </ul>
+<!-- 									<ul class="list-unstyled slick-slider pagg-slider"> -->
+<!-- 							            <li><img src="images/img45.jpg" alt="image description"></li> -->
+<!-- 							        	<li><img src="images/img46.png" alt="image description"></li> -->
+<!-- 							        </ul> -->
 							    </div>
 								<div class="text-holder">
-									<h3>Pawbits Joint</h3> 
-									<span class="price">$134.00</span>	
-									<p>There are many variations of passages of Lorem Ipsum as available, but the majority have suffered alteration in some form, by injected humour, or randomised words which buy don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>	
+									<h3>{{pet.pname}}</h3> 
+									<span class="price">${{pet.price}}</span>	
 									<form class="select-form">
 										<fieldset>
 										    <input class="form-control" type="number" value="1" min="0" max="1000">
 										</fieldset>
 									</form>
-									<a href="cart.html" class="btn-primary lg-round text-uppercase"><i class="icon-cart"></i> add to cart</a>
+									<a href="cart.html" class="btn-primary lg-round text-uppercase"><i class="icon-cart"></i> 加入购物车</a>
 									<ul class="list-unstyled text-center share-list">
 										<li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
 										<li><a href="#"><i class="icon-refresh"></i></a></li>
@@ -157,12 +160,12 @@
 						    </ul>
 						    <div class="tab-content">
 						        <div id="tab1-0">
-						        	<p>Passages of Lorem Ipsum as available, but the majority have suffered alteration in some form, by injected humour, or randomised words which buy don't look even slightly believable. If you are going to use a passage of need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
-						        	<ul class="list-unstyled">
-						        		<li>Suitable for : Pets</li>
-						        		<li>Color: Assorted colors, please see available color options</li>
-						        		<li>Available Sizes: 5 in, 3.2 in</li>
-						        	</ul>
+						        	<p>{{pet.pdesc}}</p>
+<!-- 						        	<ul class="list-unstyled"> -->
+<!-- 						        		<li>Suitable for : Pets</li> -->
+<!-- 						        		<li>Color: Assorted colors, please see available color options</li> -->
+<!-- 						        		<li>Available Sizes: 5 in, 3.2 in</li> -->
+<!-- 						        	</ul> -->
 						        </div>
 						        <div id="tab2-0">
 						        	<p>Passages of Lorem Ipsum as available, but the majority have suffered alteration in some form, by injected humour, or randomised words which buy don't look even slightly believable. If you are going to use a passage of need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
@@ -174,54 +177,17 @@
 						        </div>
 						    </div>
 							<div class="related-products">
-								<h3 class="text-center">Related Products</h3>
-								<div class="product-box">
-									<div class="product-col">
+							<h3 class="text-center">当前热卖</h3> 
+								<div  class="product-box">
+									
+									<div v-for="pet in plist" class="product-col">
 										<div class="img-holder">
-											<img src="images/img14.jpg" alt="food-img" class="img-responsive">
+											<img :src="pet.image" alt="food-img" class="img-responsive">
 											<div class="over-holder">
 												<ul class="list-unstyled text-center share-list">
 													<li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
 													<li><a href="#"><i class="icon-refresh"></i></a></li>
-													<li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
-												</ul>
-											</div>
-										</div>
-										<div class="descrip">
-											<h4 class="heading2">Pets Puriest</h4>
-											<span class="price"><del class="discount-price">$62.00</del> $58.00</span>
-										</div>
-										<div class="text-center">
-											<a href="cart.html" class="btn-primary lg-round text-uppercase"><i class="icon-cart"></i>add to cart</a>
-										</div>
-									</div>
-									<div class="product-col">
-										<div class="img-holder">
-											<img src="images/img15.jpg" alt="food-img" class="img-responsive">
-											<div class="over-holder">
-												<ul class="list-unstyled text-center share-list">
-													<li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="icon-refresh"></i></a></li>
-													<li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
-												</ul>
-											</div>
-										</div>
-										<div class="descrip">
-											<h4 class="heading2">Nutri-Pooch</h4>
-											<span class="price"><del class="discount-price">$62.00</del> $58.00</span>
-										</div>
-										<div class="text-center">
-											<a href="cart.html" class="btn-primary lg-round text-uppercase"><i class="icon-cart"></i>add to cart</a>
-										</div>
-									</div>
-									<div class="product-col">
-										<div class="img-holder">
-											<img src="images/img39.jpg" alt="food-img" class="img-responsive">
-											<div class="over-holder">
-												<ul class="list-unstyled text-center share-list">
-													<li><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="icon-refresh"></i></a></li>
-													<li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+													<li><a :href="'shop-detail.html#'+pet.pid"><i class="fa fa-search" aria-hidden="true"></i></a></li>
 												</ul>
 											</div>
 										</div>
@@ -236,6 +202,23 @@
 								</div>
 							</div>
 						</article>
+						
+						<script type="text/javascript">
+				   var v = new Vue({
+					   el : "#content",
+					   data : { pet : {},
+						   plist:[]},
+					   created (){
+						   var pid = location.hash.substring(1);
+						   axios.get("queryById?pid="+pid).then(res=>{
+							   this.pet=res.data;
+						   }),axios.get("queryHotPet2").then(res=>{
+								this.plist = res.data;
+							})
+					   }
+				   })
+				</script>
+						
 						<aside id="sidebar">
 							<section class="widget">
 								<h3>Filter</h3>
@@ -316,6 +299,8 @@
 					</div>
 				</div>
 			</section>
+			
+			
 			<section class="callout" style="background-image:url(images/img26.jpg);">
 				<div class="container">
 					<div class="row">
@@ -336,25 +321,25 @@
 						<div class="footer-logo">
 							<a href="#"><img src="images/footer-logo.png" alt="Pet Shop" class="img-responsive"></a>
 						</div>
-						<p>It is a long established fact that a reader <br class="hidden-xs">distracted by the readable content</p>
+						<p>你给我们信任，我们给它关爱。</p>
 						<ul class="contact-list list-unstyled">
-							<li><span class="icon"><i class="fa fa-map-signs" aria-hidden="true"></i></span> No: 801, petty shop, Australia.</li>
-							<li><a href=""><span class="icon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>pettyshop@mail.com</a></li>
-							<li><a href="#"><span class="icon"><i class="fa fa-phone" aria-hidden="true"></i></span> (+23) 900 8990 000 </a></li>
+							<li><span class="icon"><i class="fa fa-map-signs" aria-hidden="true"></i></span> No: 801, petty 商店, 湖南省衡阳市.</li>
+							<li><a href=""><span class="icon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>792602334@qq.com</a></li>
+							<li><a href="#"><span class="icon"><i class="fa fa-phone" aria-hidden="true"></i></span> (+86) 15580361233 </a></li>
 						</ul>
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-2">
-						<h3>Information</h3>
+						<h3>宠物信息</h3>
 						<ul class="info-list list-unstyled">
-							<li><a href="#"><span class="icon"><i class="fa fa-angle-right" aria-hidden="true"></i></span>Pet Adoption</a></li>
-							<li><a href="#"><span class="icon"><i class="fa fa-angle-right" aria-hidden="true"></i></span>Active Dogs</a></li>
-							<li><a href="#"><span class="icon"><i class="fa fa-angle-right" aria-hidden="true"></i></span>Pet Daycare</a></li>
-							<li><a href="#"><span class="icon"><i class="fa fa-angle-right" aria-hidden="true"></i></span>Dog Training</a></li>
-							<li><a href="#"><span class="icon"><i class="fa fa-angle-right" aria-hidden="true"></i></span>Pet Helpcare</a></li>
+							<li><a href="#"><span class="icon"><i class="fa fa-angle-right" aria-hidden="true"></i></span>宠物收容所</a></li>
+							<li><a href="#"><span class="icon"><i class="fa fa-angle-right" aria-hidden="true"></i></span>快乐的宠物</a></li>
+							<li><a href="#"><span class="icon"><i class="fa fa-angle-right" aria-hidden="true"></i></span>宠物日常护理</a></li>
+							<li><a href="#"><span class="icon"><i class="fa fa-angle-right" aria-hidden="true"></i></span>宠物训练</a></li>
+							<li><a href="#"><span class="icon"><i class="fa fa-angle-right" aria-hidden="true"></i></span>帮助宠物</a></li>
 						</ul>
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-3">
-						<h3>Instagram</h3>
+						<h3>照片墙</h3>
 						<ul class="insta-list list-unstyled">
 							<li><a href="#"><img src="images/img27.jpg" alt="footer-img" class="img-responsive"></a></li>
 							<li><a href="#"><img src="images/img28.jpg" alt="footer-img" class="img-responsive"></a></li>
@@ -365,9 +350,9 @@
 						</ul>
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-3">
-						<h3>Newsletter</h3>
+						<h3>电子邮件</h3>
 						<div class="newsletter">
-							<p>It is a long established fact that a by <br class="hidden-xs">the readable content</p>
+							<p>欢迎联系我们！！！</p>
 							<form class="newsletter-form" action="#">
 								<fieldset>
 									<input class="form-control" placeholder="Email" type="email">

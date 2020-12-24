@@ -20,8 +20,23 @@ public class PetDao extends BaseDao{
 		String sql = "select * from pets where pid limit 0,9";
 		return jt.query(sql, petRowMapper);
 	}
+	public List<Pets> selectPetHot2(){
+		String sql = "select * from pets where pid limit 0,3";
+		return jt.query(sql, petRowMapper);
+	}
 	
-	
+	/**
+	 * 根据id查询商品
+	 * @param id
+	 * @return
+	 */
+	public Pets selectById(int pid) {
+		String sql = "select * from pets where pid=?";
+		return jt.query(sql, rs->{//lamda 表达式
+			//resultsetextrator  接口方法中，要求手动执行 结果集的next方法
+			return rs.next() ? petRowMapper.mapRow(rs, -1) : null;
+		}, pid);
+	}
 	
 	
 	/**
