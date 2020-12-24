@@ -134,45 +134,45 @@
 					<h1 class="heading text-center">注册</h1>
 				</div>
 			</section>
-			<section class="check-sec container">
+			<section id="reguser" class="check-sec container">
 				<div class="row">
 					<div class="col-xs-12">
-						<form class="checkout-form text-left" action="reg1.do" method="post">
+						<form class="checkout-form text-left">
 							<fieldset>
 								<div class="row">
 									<div class="col-xs-12 col-sm-6">
 										<h2>用户信息</h2>
 										<div class="form-group">		
 											<label>账号 <span class="sign">*</span></label>
-											<span class="e" th:if="${errors}!=null" th:text="${errors.get('account')}"> </span><br>
+											<span class="e"> </span><br>
 											<input class="form-control " placeholder="" type="text"
-											 name="account" th:value="${user}!=null ? ${user.account} : ''">
+											 name="account" v-model="user.account">
 											
 											<label>昵称<span class="sign">*</span></label>
-											<span class="e" th:if="${errors}!=null" th:text="${errors.get('username')}"></span><br>
+											<span class="e"></span><br>
 											<input class="form-control " placeholder="" type="text"
-											name="username" th:value="${user}!=null ? ${user.username} : ''">
+											name="username" v-model="user.username">
 																				
 											<label>密码<span class="sign">*</span></label>
-											<span class="e" th:if="${errors}!=null" th:text="${errors.get('password')}"></span><br>
+											<span class="e" ></span><br>
 											<input class="form-control " placeholder="" type="text"
-											name="password" th:value="${user}!=null ? ${user.password} : ''">
+											name="password" v-model="user.password">
 											
 											<label>性别<span class="sign"></span></label>
-											<span class="e" th:if="${errors}!=null" th:text="${errors.get('sex')}"></span><br>
+											<span class=></span><br>
 											<input class="form-control " placeholder="" type="text"
-											name="sex" th:value="${user}!=null ? ${user.sex} : ''">
+											name="sex" v-model="user.sex">
 											
 											<label>地址<span class="sign">*</span></label>
-											<span class="e" th:if="${errors}!=null" th:text="${errors.get('addr')}"></span><br>
+											<span class="e"></span><br>
 											<input class="form-control" placeholder="" type="text"
-											name="addr" th:value="${user}!=null ? ${user.addr} : ''">
+											name="addr" v-model="user.addr">
 											
 											
 											<label>电话<span class="sign">*</span></label>
-											<span class="e" th:if="${errors}!=null" th:text="${errors.get('phone')}"></span><br>
+											<span class="e"></span><br>
 											<input class="form-control" placeholder="" type="text"
-											name="phone" th:value="${user}!=null ? ${user.phone} : ''">
+											name="phone" v-model="user.phone">
 											
 											<button>提交</button>
 										</div>
@@ -183,6 +183,43 @@
 					</div>
 				</div>
 			</section>
+			
+			<script type="text/javascript">
+						var v2 = new Vue({
+							el:"#reguser",
+							data:{
+								user:{
+									account:"",
+									password:"",
+									username:"",
+									phone:"",
+									sex:"",
+									addr:""
+								},
+								methods:{
+									reg(){
+										var params = new URLSearchParams();
+										params.append("account",this.user.account);
+										params.append("password",this.user.password);
+										params.append("username",this.user.name);
+										params.append("phone",this.user.phone);
+										params.append("addr",this.user.addr);
+										params.append("sex",this.user.sex);
+										
+										axios.post("reg",params).then(res=>{
+											alert(res.data.msg);
+											if(res.data.code == 1){
+												location.href="login.html";
+											}
+										}).catch(error=>{
+											alert("系统错误，请联系管理员");
+										})
+									}
+								}
+							})
+					
+					</script>
+			
 <section class="callout" style="background-image:url(images/img26.jpg);">
 				<div class="container">
 					<div class="row">
