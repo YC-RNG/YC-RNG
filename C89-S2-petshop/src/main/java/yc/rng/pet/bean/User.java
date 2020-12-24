@@ -8,26 +8,16 @@ import org.hibernate.validator.constraints.Length;
 
 public class User implements java.io.Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private Integer uid;
-	@NotEmpty(message="昵称不能为空!")
-	@Length(min=4,max=20,message="昵称必须是4~20位")
-	private String username;
-	@NotEmpty(message="账号不能为空!")
-	private String account;
-	@NotEmpty(message="密码不能为空!")
-	@Length(min=4,max=20,message="密码必须是4~20位")
-	private String password;
-	@NotEmpty(message="电话不能为空!")
+	private String username;	
+	private String account;	
+	private String password;	
 	private String phone;
 	private String sex;
 	private Integer state;
 	private Timestamp createtime;
-	@NotEmpty(message="地址不能为空!")
 	private String addr;
 	
 	
@@ -125,9 +115,11 @@ public class User implements java.io.Serializable {
 	public String toString() {
 		return "User [uid=" + uid + ", username=" + username + ", account=" + account + ", password=" + password
 				+ ", phone=" + phone + ", sex=" + sex + ", state=" + state + ", createtime=" + createtime + ", addr="
-				+ addr + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
-				+ super.toString() + "]";
+				+ addr + "]";
 	}
+
+
+
 
 	
 }

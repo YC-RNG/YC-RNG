@@ -1,12 +1,9 @@
 package yc.rng.pet.web;
 
 import java.util.List;
-
 import javax.annotation.Resource;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import yc.rng.pet.bean.Pets;
 import yc.rng.pet.dao.PetDao;
 
@@ -32,6 +29,11 @@ public class PetAction {
 	@RequestMapping("queryById")
 	public Pets queryById(int pid) {
 		return petdao.selectById(pid);
+	}
+	
+	@RequestMapping("queryByCid")
+	public List<Pets> queryByCid(int cid){
+		return petdao.selectByCid(cid);
 	}
 
 }

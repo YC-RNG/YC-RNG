@@ -3,6 +3,7 @@ package yc.rng.pet.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -45,11 +46,26 @@ public class UserDao extends BaseDao{
 		
 	}
 	
+	/**
+	 * 注册
+	 * @param user
+	 * @throws BizException
+	 * @throws SQLException
+	 */
 	public void reg(User user) throws BizException, SQLException {
 		ubiz.reg(user);
 	}
-	
-	 
+	/**
+	 * 登陆
+	 * @param account
+	 * @param password
+	 * @param session
+	 * @return
+	 * @throws BizException
+	 */
+	public User login(String account, String password,HttpSession session) throws BizException {
+		return ubiz.login(account,password,session);
+	}
 	
 	/**
 	 * userRowMapper

@@ -23,10 +23,9 @@ public class Category implements java.io.Serializable {
 	}
 	@Override
 	public String toString() {
-		return "category [cid=" + cid + ", cname=" + cname + ", getCid()=" + getCid() + ", getCname()=" + getCname()
-				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-				+ "]";
+		return "Category [cid=" + cid + ", cname=" + cname + "]";
 	}
+	
 	
 	
 }

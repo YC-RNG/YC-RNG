@@ -162,7 +162,7 @@
 										<div class="form-group">		
 											<label>账号 <span class="sign">*</span></label>
 											<span class="e"> </span><br>
-											<input class="form-control " placeholder="" type="text"
+											<input class="form-control "  type="text"
 											 name="account" v-model="user.account">
 											
 											<label>昵称<span class="sign">*</span></label>
@@ -226,9 +226,9 @@
 								
 								reg(){
 									var params = new URLSearchParams();
-									params.append("username",this.user.username);
-									params.append("password",this.user.password);
 									params.append("account",this.user.account);
+									params.append("password",this.user.password);
+									params.append("username",this.user.username);
 									params.append("phone",this.user.phone);
 									params.append("sex",this.user.sex);
 									params.append("addr",this.user.addr);

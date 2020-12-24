@@ -3,10 +3,8 @@ package yc.rng.pet.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-
 import yc.rng.pet.bean.Pets;
 
 @Repository
@@ -38,6 +36,15 @@ public class PetDao extends BaseDao{
 		}, pid);
 	}
 	
+	/**
+	 * 分类查询
+	 * @param cid
+	 * @return
+	 */
+	public List<Pets> selectByCid(int cid) {
+		String sql = "select * from pets where cid=?";
+		return jt.query(sql, petRowMapper,cid);
+	}
 	
 	/**
 	 * rowMapper
