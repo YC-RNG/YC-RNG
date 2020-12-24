@@ -21,6 +21,7 @@
 	<link rel="stylesheet" type="text/css" href="css/icon-fonts.css">
 	<link rel="stylesheet" type="text/css" href="css/plugins.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
+	
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
 
@@ -211,31 +212,39 @@
 									account:"",
 									password:"",
 									username:"",
+									
 									phone:"",
-									sex:"",
+									
+									state:"",
+								
 									addr:""
-								},
-								methods:{
-									reg(){
-										var params = new URLSearchParams();
-										params.append("account",this.user.account);
-										params.append("password",this.user.password);
-										params.append("username",this.user.name);
-										params.append("phone",this.user.phone);
-										params.append("addr",this.user.addr);
-										params.append("sex",this.user.sex);
-										
-										axios.post("reg",params).then(res=>{
-											alert(res.data.msg);
-											if(res.data.code == 1){
-												location.href="login.html";
-											}
-										}).catch(error=>{
-											alert("系统错误，请联系管理员");
-										})
-									}
 								}
-							})
+								
+								
+							},
+							methods:{
+								
+								reg(){
+									var params = new URLSearchParams();
+									params.append("username",this.user.username);
+									params.append("password",this.user.password);
+									params.append("account",this.user.account);
+									params.append("phone",this.user.phone);
+									params.append("sex",this.user.sex);
+									params.append("addr",this.user.addr);
+									
+									axios.post("reg",params).then(res=>{
+										alert(res.data.msg);
+										if(res.data.code == 1){
+											location.href="login.html";
+										}
+									}).catch(error=>{
+										alert("系统错误，请联系管理员");
+									})
+								}
+							}
+							
+						})
 					
 					</script>
 			

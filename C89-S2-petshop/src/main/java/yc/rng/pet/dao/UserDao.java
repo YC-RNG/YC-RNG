@@ -25,11 +25,11 @@ public class UserDao extends BaseDao{
 	 * @throws SQLException
 	 */
 	public void insert(User user) throws SQLException {
-		String sql = "insert into user values(null,?,?,?,?,?,?,1,null)";
+		String sql = "insert into user values(null,?,?,?,?,?,1,null,?)";
 		jt.update(sql,
 				user.getUsername(),user.getAccount(),
 				user.getPassword(),user.getPhone(),
-				user.getSex(),user.getAddr(),user.getState(),user.getCreatetime());
+				user.getSex(),user.getAddr());
 	}
 	
 	/**
