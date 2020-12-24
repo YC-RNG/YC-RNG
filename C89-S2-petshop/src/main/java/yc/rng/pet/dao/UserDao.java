@@ -49,7 +49,7 @@ public class UserDao extends BaseDao{
 		ubiz.reg(user);
 	}
 	
-	
+	 
 	
 	/**
 	 * userRowMapper

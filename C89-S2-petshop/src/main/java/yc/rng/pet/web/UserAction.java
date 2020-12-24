@@ -26,7 +26,6 @@ public class UserAction {
 	@RequestMapping("reg")
 	public Result reg(User user,String vcode,HttpSession session) throws SQLException {
 		try {
-			
 			udao.reg(user);
 			return new Result(1, "注册成功");
 		} catch (BizException e) {

@@ -22,18 +22,34 @@
 	<link rel="stylesheet" type="text/css" href="css/plugins.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-	<script
-		src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
-	<script type="text/javascript">
-		function checkImg(){
-		// 更新验证码
-		}
-	</script>
+	<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
+
 	<style type="text/css">
 	.e{
 		color:red
 	}
 </style>
+<script type="text/javascript">
+	function checkForm(){
+		// 校验用户名:
+		
+		// 校验密码:
+		
+		// 校验确认密码
+		
+		//校验邮箱
+		return false;
+	}
+	
+	//校验用户名是否存在
+	function checkUserName(){
+		// ajax 验证用户名是否存在
+	}
+	function changeImg(){
+		// 更新验证码
+	}
+</script>
+
 </head>
 <body>
 	<div id="wrapper">
@@ -174,7 +190,10 @@
 											<input class="form-control" placeholder="" type="text"
 											name="phone" v-model="user.phone">
 											
-											<button>提交</button>
+											<th>&nbsp;</th>
+											<input @click="reg" type="button" class="submit"
+												value="提交">
+											
 										</div>
 									</div>
 								</div>
