@@ -23,6 +23,12 @@ public class PetDao extends BaseDao{
 		return jt.query(sql, petRowMapper);
 	}
 	
+	public List<Pets> selectPetNew(){
+		String sql = "select * from pets order by createtime desc limit 3";
+		return jt.query(sql, petRowMapper);
+	}
+	
+	
 	/**
 	 * 根据id查询商品
 	 * @param id

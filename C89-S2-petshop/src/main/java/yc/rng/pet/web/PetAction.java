@@ -21,6 +21,10 @@ public class PetAction {
 	public List<Pets> queryHotPet(){
 		return petdao.selectPetHot();
 	}
+	@RequestMapping("queryNewPet")
+	public List<Pets> queryNewPet(){
+		return petdao.selectPetNew();
+	}
 	@RequestMapping("queryHotPet2")
 	public List<Pets> queryHotPet2(){
 		return petdao.selectPetHot2();

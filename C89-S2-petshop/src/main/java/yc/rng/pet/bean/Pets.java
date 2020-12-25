@@ -1,5 +1,7 @@
 package yc.rng.pet.bean;
 
+import java.util.Date;
+
 public class Pets implements java.io.Serializable{
 	/**
 	 * 
@@ -12,6 +14,16 @@ public class Pets implements java.io.Serializable{
 	private String pdesc;
 	private Integer state;
 	private Integer cid;
+	private Date createtime;
+	public Date getCreatetime() {
+		return createtime;
+	}
+	public void setCreatetime(Date createtime) {
+		this.createtime = createtime;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	public Integer getPid() {
 		return pid;
 	}
@@ -56,11 +68,8 @@ public class Pets implements java.io.Serializable{
 	}
 	@Override
 	public String toString() {
-		return "pets [pid=" + pid + ", pname=" + pname + ", price=" + price + ", image=" + image + ", pdesc="
-				+ pdesc + ", state=" + state + ", cid=" + cid + ", getPid()=" + getPid() + ", getPname()=" + getPname()
-				+ ", getPrice()=" + getPrice() + ", getImage()=" + getImage() + ", getPdesc()=" + getPdesc()
-				+ ", getState()=" + getState() + ", getCid()=" + getCid() + ", getClass()=" + getClass()
-				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+		return "Pets [pid=" + pid + ", pname=" + pname + ", price=" + price + ", image=" + image + ", pdesc=" + pdesc
+				+ ", state=" + state + ", cid=" + cid + ", createtime=" + createtime + "]";
 	}
 	
 	

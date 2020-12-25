@@ -210,11 +210,11 @@
 							</script>
 							
 							<section class="widget">
-								<h3>Featured Products</h3>
-								<ul class="list-unstyled feature-list">
-									<li>
+								<h3>最新商品</h3>
+								<ul id="newpet" class="list-unstyled feature-list">
+									<li v-for="pet in plist">
 										<div class="img-holder">
-											<a href="shop-detail.html"><img class="img-responsive" src="images/img40.jpg" alt="image"></a>
+											<a :href="'shop-detail.html#'+pet.pid"><img class="img-responsive" :src="pet.image" alt="image"></a>
 										</div>
 										<div class="txt-holder">
 											<ul class="list-unstyled rating-list">
@@ -224,46 +224,27 @@
 												<li><a href="#" class="fa fa-star-o"></a></li>
 												<li><a href="#" class="fa fa-star-o"></a></li>
 											</ul>
-											<h3><a href="shop-detail.html">Premier Pet+ for Dogs</a></h3>
-											<span class="price">$30.00</span>
-										</div>
-									</li>
-									<li>
-										<div class="img-holder">
-											<a href="shop-detail.html"><img class="img-responsive" src="images/img41.jpg" alt="image"></a>
-										</div>
-										<div class="txt-holder">
-											<ul class="list-unstyled rating-list">
-												<li><a href="#" class="fa fa-star-o"></a></li>
-												<li><a href="#" class="fa fa-star-o"></a></li>
-												<li><a href="#" class="fa fa-star-o"></a></li>
-												<li><a href="#" class="fa fa-star-o"></a></li>
-												<li><a href="#" class="fa fa-star-o"></a></li>
-											</ul>
-											<h3><a href="shop-detail.html">Nutri-Pooch Vitamin+</a></h3>
-											<span class="price">$30.00</span>
-										</div>
-									</li>
-									<li>
-										<div class="img-holder">
-											<a href="shop-detail.html"><img class="img-responsive" src="images/img42.jpg" alt="image"></a>
-										</div>
-										<div class="txt-holder">
-											<ul class="list-unstyled rating-list">
-												<li><a href="#" class="fa fa-star-o"></a></li>
-												<li><a href="#" class="fa fa-star-o"></a></li>
-												<li><a href="#" class="fa fa-star-o"></a></li>
-												<li><a href="#" class="fa fa-star-o"></a></li>
-												<li><a href="#" class="fa fa-star-o"></a></li>
-											</ul>
-											<h3><a href="shop-detail.html">Joint Support for Cats</a></h3>
-											<span class="price">$30.00</span>
+											<h3><a :href="'shop-detail.html#'+pet.pid">{{pet.pname}}</a></h3>
+											<span class="price">${{pet.price}}</span>
 										</div>
 									</li>
 								</ul>
 							</section>
+							<script type="text/javascript">
+								var vue = new Vue({
+									el:"#newpet",
+									data:{
+										plist:[]
+									},
+									created(){
+										axios.get("queryNewPet").then(res=>{
+											this.plist = res.data;
+										})
+									}
+								})
+								</script>
 							<section class="widget">
-								<h3>Search Products</h3>
+								<h3>查询商品</h3>
 								<form class="search-form" action="#">
 									<fieldset>
 										<input class="form-control" placeholder="Search...." type="search">
