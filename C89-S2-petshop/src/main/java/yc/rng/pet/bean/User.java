@@ -1,6 +1,7 @@
 package yc.rng.pet.bean;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.validation.constraints.NotEmpty;
 
@@ -12,12 +13,12 @@ public class User implements java.io.Serializable {
 
 	private Integer uid;
 	private String username;	
-	private String account;	
+	private Integer account;	
 	private String password;	
 	private String phone;
 	private String sex;
 	private Integer state;
-	private Timestamp createtime;
+	private Date createtime;
 	private String addr;
 	
 	
@@ -41,12 +42,12 @@ public class User implements java.io.Serializable {
 	}
 
 
-	public String getAccount() {
+	public Integer getAccount() {
 		return account;
 	}
 
 
-	public void setAccount(String account) {
+	public void setAccount(Integer account) {
 		this.account = account;
 	}
 
@@ -91,13 +92,19 @@ public class User implements java.io.Serializable {
 	}
 
 
-	public Timestamp getCreatetime() {
+
+	public Date getCreatetime() {
 		return createtime;
 	}
 
 
-	public void setCreatetime(Timestamp createtime) {
+	public void setCreatetime(Date createtime) {
 		this.createtime = createtime;
+	}
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 

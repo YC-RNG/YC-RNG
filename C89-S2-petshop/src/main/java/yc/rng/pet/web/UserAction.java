@@ -24,7 +24,7 @@ public class UserAction {
 	
 	@Resource
 	public UserBiz ubiz;
-	
+	 
 	@RequestMapping("reg")
 	public Result reg(User user,String vcode,HttpSession session) throws SQLException {
 		try {
@@ -35,7 +35,7 @@ public class UserAction {
 			return new Result(0, e.getMessage());
 		} 
 	}
-	
+	 
 	@RequestMapping("getLoginedUser")
 	public User getLoginedUser(String username,HttpSession session) {
 		User user = (User) session.getAttribute("loginedUser");
@@ -43,7 +43,7 @@ public class UserAction {
 	}
 	
 	@RequestMapping("login")
-	public Result login(String account,String password,HttpSession session) throws IOException, EncodeException {
+	public Result login(int account,String password,HttpSession session) throws IOException, EncodeException {
 		User user;
 		try {
 			user = udao.login(account,password,session);

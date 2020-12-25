@@ -59,7 +59,7 @@
 						</ul>
 					</div>
 					<div class="col-xs-12 col-sm-6 hidden-xs">
-						<div class="social-list">
+						<div id="user" class="social-list">
 							<ul class="list-unstyled social-network">
 								<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
 								<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
@@ -67,10 +67,42 @@
 							</ul>
 							<ul class="list-unstyled account-cart">
 							
-								<li><a href="login.html"><i class="icon-user"></i><span class="hidden-xs">登录/注册</span></a></li>
+								<li><a href="login.html"><i class="icon-user"></i>
+								<span v-if=" user=='' " class="hidden-xs">登录/注册</span></a>
+								<span v-if="user!=null" class="hidden-xs">{{user.username}}</span>
+								</li>
+								
+								<li><i class="icon-cart"></i><span @click="logout()" class="hidden-xs">退出</span></li>
 								<li><a href="#"><i class="icon-cart"></i><span class="hidden-xs">购物车</span></a></li>
 							</ul>
 						</div>
+						
+						<script type="text/javascript">
+			var v2 = new Vue({
+				el:"#user",
+				data:{
+					user:{}
+				},
+				created(){
+					axios.get("getLoginedUser").then(res=>{
+						this.user = res.data;
+					})
+				},
+				methods:{
+					logout(){
+						if(confirm("确定要退出登录?")){
+							axios.get("out").then(res=>{
+								alert(res.data.msg);
+								location.href = "index.html";
+							});
+						}
+					}
+				}
+			})
+		
+		
+		</script>
+						
 					</div>
 				</div>
 			</div>

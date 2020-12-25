@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Service;
+
+import net.sf.jsqlparser.statement.select.Select;
 import yc.rng.pet.bean.User;
 import yc.rng.pet.dao.UserDao;
 import yc.rng.pet.util.Utils;
@@ -23,9 +25,9 @@ public class UserBiz {
 		Utils.checkNull(user.getPhone(), "电话号码不能为空");
 		Utils.checkNull(user.getSex(), "性别不能为空");
 		Utils.checkNull(user.getAddr(), "地址不能为空");
+		
 		// 同名验证
 		User dbuser = udao.selectByAccount(user.getAccount());
-		System.out.println(dbuser);
 		if(dbuser != null) {
 			throw new BizException("该用户名已经被注册");
 		}
@@ -37,7 +39,7 @@ public class UserBiz {
 		}
 	}
 	
-	public User login(String account,String password,HttpSession session) throws BizException {
+	public User login(int account,String password,HttpSession session) throws BizException {
 		// 字段验证
 		Utils.checkNull(account, "请输入用户名");
 		Utils.checkNull(password, "请输入密码");
@@ -47,7 +49,7 @@ public class UserBiz {
 		if(user == null) {
 			throw new BizException("请检查账号是否正确");
 		}
-	
+
 		if( !user.getPassword().equals(password)  ) {
 			throw new BizException("密码错误");
 		}

@@ -26,7 +26,7 @@ public class UserDao extends BaseDao{
 	 * @throws SQLException
 	 */
 	public void insert(User user) throws SQLException {
-		String sql = "insert into user values(null,?,?,?,?,?,1,null,?)";
+		String sql = "insert into user values(null,?,?,?,?,?,1,now(),?)";
 		jt.update(sql,
 				user.getUsername(),user.getAccount(),
 				user.getPassword(),user.getPhone(),
@@ -38,7 +38,7 @@ public class UserDao extends BaseDao{
 	 * @param user
 	 * @throws SQLException
 	 */
-	public User selectByAccount(String account) {
+	public User selectByAccount(int account) {
 		String sql = "select * from user where account=?";
 		return jt.query(sql, rs->{
 			return rs.next() ? userRowMapper.mapRow(rs, -1) : null;
@@ -63,7 +63,7 @@ public class UserDao extends BaseDao{
 	 * @return
 	 * @throws BizException
 	 */
-	public User login(String account, String password,HttpSession session) throws BizException {
+	public User login(int account, String password,HttpSession session) throws BizException {
 		return ubiz.login(account,password,session);
 	}
 	
@@ -76,15 +76,15 @@ public class UserDao extends BaseDao{
 		public User mapRow(ResultSet rs, int rowNum) throws SQLException {
 			User user = new User();
 			user.setUid(rs.getInt("uid"));
-			user.setAccount(rs.getString("account"));
+			user.setAccount(rs.getInt("account"));
 			user.setUsername(rs.getString("username"));
 			user.setPassword(rs.getString("password"));
 			user.setPhone(rs.getString("phone"));
 			user.setSex(rs.getString("sex"));
 			user.setAddr(rs.getString("addr"));
 			user.setState(rs.getInt("state"));
-			user.setCreatetime(rs.getTimestamp("createtime"));
-			return null;
+			user.setCreatetime(rs.getDate("createtime"));
+			return user;
 		}
 		
 	};
