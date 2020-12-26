@@ -20,6 +20,8 @@
 	<link rel="stylesheet" type="text/css" href="css/icon-fonts.css">
 	<link rel="stylesheet" type="text/css" href="css/plugins.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
 </head>
 <body>
 	<div id="wrapper">
@@ -28,8 +30,8 @@
 				<div class="row">
 					<div class="col-xs-12 hidden visible-xs">
 						<ul class="list-unstyled social-network text-center">
-							<li><a href="mailto:petty@support.com"><i class="icon-message" aria-hidden="true"></i></a></li>
-							<li><a href="tell:1345678000"><i class="icon-phone-call" aria-hidden="true"></i></a></li>
+							<li><a href="mailto:792602334@qq.com"><i class="icon-message" aria-hidden="true"></i></a></li>
+							<li><a href="tell:15580361233"><i class="icon-phone-call" aria-hidden="true"></i></a></li>
 							<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
 							<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
 							<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
@@ -43,30 +45,63 @@
 								<a href="mailto:petty@support.com" class="icon pull-left"><i class="icon-message"></i></a>
 								<div class="align-left pull-left hidden-xs">
 									<strong>Mail us:</strong>
-									<a href="mailto:petty@support.com">petty@support.com</a>
+									<a href="mailto:792602334@qq.com">792602334@qq.com</a>
 								</div>
 							</li>
 							<li>
-								<a href="tell:1345678000" class="icon pull-left"><i class="icon-phone-call"></i></a>
+								<a href="tell:15580361233" class="icon pull-left"><i class="icon-phone-call"></i></a>
 								<div class="align-left pull-left hidden-xs">
 									<strong>Call us:</strong>
-									<a href="tell:1345678000">(+1) 345 678 000</a>
+									<a href="tell:15580361233">(+86) 15580361233</a>
 								</div>
 							</li>
 						</ul>
 					</div>
 					<div class="col-xs-12 col-sm-6 hidden-xs">
-						<div class="social-list">
+						<div id="user" class="social-list">
 							<ul class="list-unstyled social-network">
 								<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
 								<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
 								<li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
 							</ul>
 							<ul class="list-unstyled account-cart">
-								<li><a href="#"><i class="icon-user"></i><span class="hidden-xs">Account</span></a></li>
-								<li><a href="#"><i class="icon-cart"></i><span class="hidden-xs">Cart</span></a></li>
+							
+								<li><a href="login.html"><i class="icon-user"></i>
+								<span v-if=" user=='' " class="hidden-xs">登录/注册</span></a>
+								<span v-if="user!=null" class="hidden-xs">{{user.username}}</span>
+								</li>
+								
+								<li><i class="icon-cart"></i><span @click="logout()" class="hidden-xs">退出</span></li>
+								<li><a href="#"><i class="icon-cart"></i><span class="hidden-xs">购物车</span></a></li>
 							</ul>
 						</div>
+						
+						<script type="text/javascript">
+			var v2 = new Vue({
+				el:"#user",
+				data:{
+					user:{}
+				},
+				created(){
+					axios.get("getLoginedUser").then(res=>{
+						this.user = res.data;
+					})
+				},
+				methods:{
+					logout(){
+						if(confirm("确定要退出登录?")){
+							axios.get("out").then(res=>{
+								alert(res.data.msg);
+								location.href = "index.html";
+							});
+						}
+					}
+				}
+			})
+		
+		
+		</script>
+						
 					</div>
 				</div>
 			</div>
@@ -79,56 +114,49 @@
 						<a href="#" class="nav-opener pull-right hidden visible-xs"><i class="fa fa-bars"></i></a>
 						<nav id="nav">
 							<ul class="list-unstyled text-uppercase menu-left">
-								<li><a href="index.html">home</a></li>
+								<li><a href="index.html">首页</a></li>
 								<li>
-									<a href="javascript:void(0);">pages <i class="fa fa-angle-down"></i></a>
+									<a href="javascript:void(0);">在线服务页 <i class="fa fa-angle-down"></i></a>
 									<ul class="list-unstyled text-uppercase dropdown">
-										<li><a href="services.html">services</a></li>
-										<li><a href="aboutus.html">about us</a></li>
-										<li><a href="gallery.html">Gallery</a></li>
-										<li><a href="404page.html">404 page</a></li>
+										<li><a href="services.html">服务</a></li>
+										<li><a href="aboutus.html">关于我们</a></li>
+										<li><a href="gallery.html">照片墙</a></li>
+										<li><a href="404page.html">404 页面</a></li>
 									</ul>
 								</li>
 								<li>
-									<a href="javascript:void(0);">shop <i class="fa fa-angle-down"></i></a>
+									<a href="javascript:void(0);">商店页 <i class="fa fa-angle-down"></i></a>
 									<ul class="list-unstyled text-uppercase dropdown">
-										<li><a href="shop.html">Shop</a></li>
-										<li><a href="shop-detail.html">Shop Detail</a></li>
-										<li><a href="cart.html">Cart</a></li>
-										<li><a href="checkout.html">Checkout</a></li>
+										<li><a href="shop.html">商店</a></li>
+										<li><a href="shop-detail.html">商品详情</a></li>
+										<li><a href="cart.html">购物车</a></li>
+										<li><a href="checkout.html">结算</a></li>
 									</ul>
 								</li>
 								<li class="logo hidden-xs"><a href="index.html"><img class="img-responsive" src="images/logo.png" alt="PetShop"></a></li>
 								<li class="mar-zero">
-									<a href="javascript:void(0);">blog</a>
+									<a href="javascript:void(0);">博客</a>
 									<ul class="list-unstyled text-uppercase dropdown">
-										<li><a href="single-blog.html">Blog Standard</a></li>
-										<li><a href="single-blog.html">Single Blog</a></li>
+										<li><a href="single-blog.html">热点话题</a></li>
+										<li><a href="single-blog.html">发布文章</a></li>
 									</ul>
 								</li>
-								<li><a href="contact-us.html">contact us</a></li>
+								<li><a href="contact-us.html">联系我们</a></li>
 							</ul>
 						</nav>
 					</div>
 				</div>
 			</div>
 		</header>
-		<main id="main">
+		<main id="main" >
 			<section class="hero-sec bg-full" style="background-image:url(images/img33.jpg);">
 				<div class="caption">
-					<h1 class="heading text-center">Checkout</h1>
+					<h1 class="heading text-center">结算订单</h1>
 				</div>
 			</section>
 			<section class="check-sec container">
 				<div class="row">
-					<div class="col-xs-12">
-						<div class="txt-wrap">
-							<p>Returning customer? <a href="#">Click here to login</a></p>
-						</div>
-						<div class="txt-wrap">
-							<p>Have a coupon?  <a href="#">Click here to enter your code</a></p>
-						</div>
-					</div>
+					
 				</div>
 				<div class="row">
 					<div class="col-xs-12">
@@ -136,50 +164,25 @@
 							<fieldset>
 								<div class="row">
 									<div class="col-xs-12 col-sm-6">
-										<h2>Billing Details</h2>
+										<h2>订单信息</h2>
 										<div class="form-group">
 											<div class="holder">
 												<div class="col">
-													<label>First Name <span class="sign">*</span></label>
-													<input class="form-control element-block" placeholder="" type="text">
-												</div>
-												<div class="col">
-													<label>Last Name<span class="sign">*</span></label>
+													<label>姓名 <span class="sign">*</span></label>
 													<input class="form-control element-block" placeholder="" type="text">
 												</div>
 											</div>
-											<label>Company Name<span class="sign">*</span></label>
-											<input class="form-control " placeholder="" type="text">
-											<label>Address 1<span class="sign">*</span></label>
-											<input class="form-control" placeholder="" type="text">
-											<label>Address 2 [optional}</label>
+											<label>地址</label>
 											<input class="form-control" placeholder="" type="text">
 											<div class="holder">
+												<
 												<div class="col">
-													<label>Email Address<span class="sign">*</span></label>
-													<input class="form-control element-block" placeholder="" type="text">
-												</div>
-												<div class="col">
-													<label>Phone<span class="sign">*</span></label>
+													<label>联系方式<span class="sign">*</span></label>
 													<input class="form-control element-block" placeholder="" type="text">
 												</div>
 											</div>
-											<div class="holder">
-												<div class="col">
-													<label>Town/City<span class="sign">*</span></label>
-													<input class="form-control element-block" placeholder="" type="text">
-												</div>
-												<div class="col">
-													<label>Pin code/Zip<span class="sign">*</span></label>
-													<input class="form-control element-block" placeholder="" type="text">
-												</div>
-											</div>
-											<label>Country<span class="sign">*</span></label>
-											<select class="form-control">
-												<option value="0">United States</option>
-												<option value="1">United States</option>
-												<option value="2">United States</option>
-											</select>
+											
+									
 										</div>
 										<div class="form-group">
 										    <input type="checkbox" class="checkbox">
@@ -187,9 +190,9 @@
 										</div>
 									</div>
 									<div class="col-xs-12 col-sm-6">
-										<h2>Additional Info</h2>
+										<h2>备注</h2>
 										<div class="form-group">
-											<label>Other Notes</label>
+											<label>其他注意事项</label>
 											<textarea class="form-control" placeholder="Notes about your order, e.g: your delivery"></textarea>
 										</div>
 									</div>
@@ -201,35 +204,33 @@
 				<div class="row">
 					<div class="col-xs-12">
 						<table class="table table-bordered">
-							<caption>Your Order</caption>
+							<caption>你的订单</caption>
 							<thead>
 								<tr>
-									<th>Products</th>
-									<th>Total</th>
+									<th>商品</th>
+									<th>价格</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody v-for="pet in plist">
 								<tr>
-									<td>Pets Puriest  × 1</td>
-									<td>34.00</td>
+									<td>{{pet.pname}} × {{pet.count}}</td>
+									<td>${{pet.price*pet.count}}</td>
 								</tr>
-								<tr>
-									<td>Nutri Vitamin+ × 1</td>
-									<td>$40.00</td>
-								</tr>
-								<tr class="total">
-									<td>Sub-Total</td>
-									<td class="clr">$74.00</td>
-								</tr>
-								<tr class="total">
-									<td>Total</td>
-									<td class="clr">$74.00</td>
-								</tr>
+								
 							</tbody>
+							<td>
+									总价格
+									</td>
+									<td>
+									<strong id="effectivePrice">￥{{sum}}元</strong>
+									</td>
+							
 						</table>
+						
 						<div class="payment-holder">
-							<h2>Payment Method</h2>
+							<h2>付款方法</h2>
 							<form  class="payment-form" action="#">
+							
 								<div class="form-group"> 
 									<label>
 										<input type="checkbox" class="check" name="checkbox" value="value" checked>Cheque Payment
@@ -267,6 +268,40 @@
 				</div>
 			</section>
 		</main>
+		
+		<script type="text/javascript">
+			var v1 = new Vue({
+				el :"#main",
+				data :{
+					plist:[]
+				},
+				created(){
+					axios.get("getLoginedUser").then(res=>{
+						if( res.data && res.data.uid ){
+							//console.log(this.$refs.counts.value);
+							axios.get("queryCart").then(res=>{
+								this.plist = res.data;
+							});
+						}else {
+							alert("你尚未登录");
+							location.href = "login.html";
+						}
+					});
+				},
+				computed:{
+					sum(){
+						var sum = 0;
+						for(var i in this.plist){
+					           sum+=this.plist[i].price*this.plist[i].count;
+					       }
+					    return sum;
+					}
+				}
+			})
+		
+		</script>
+		
+		
 		<footer id="footer">
 			<div class="container">
 				<div class="row">
@@ -274,25 +309,25 @@
 						<div class="footer-logo">
 							<a href="#"><img src="images/footer-logo.png" alt="Pet Shop" class="img-responsive"></a>
 						</div>
-						<p>It is a long established fact that a reader <br class="hidden-xs">distracted by the readable content</p>
+						<p>你给我们信任，我们给它关爱。</p>
 						<ul class="contact-list list-unstyled">
-							<li><span class="icon"><i class="fa fa-map-signs" aria-hidden="true"></i></span> No: 801, petty shop, Australia.</li>
-							<li><a href=""><span class="icon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>pettyshop@mail.com</a></li>
-							<li><a href="#"><span class="icon"><i class="fa fa-phone" aria-hidden="true"></i></span> (+23) 900 8990 000 </a></li>
+							<li><span class="icon"><i class="fa fa-map-signs" aria-hidden="true"></i></span> No: 801, petty 商店, 湖南省衡阳市.</li>
+							<li><a href=""><span class="icon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>792602334@qq.com</a></li>
+							<li><a href="#"><span class="icon"><i class="fa fa-phone" aria-hidden="true"></i></span> (+86) 15580361233 </a></li>
 						</ul>
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-2">
-						<h3>Information</h3>
+						<h3>宠物信息</h3>
 						<ul class="info-list list-unstyled">
-							<li><a href="#"><span class="icon"><i class="fa fa-angle-right" aria-hidden="true"></i></span>Pet Adoption</a></li>
-							<li><a href="#"><span class="icon"><i class="fa fa-angle-right" aria-hidden="true"></i></span>Active Dogs</a></li>
-							<li><a href="#"><span class="icon"><i class="fa fa-angle-right" aria-hidden="true"></i></span>Pet Daycare</a></li>
-							<li><a href="#"><span class="icon"><i class="fa fa-angle-right" aria-hidden="true"></i></span>Dog Training</a></li>
-							<li><a href="#"><span class="icon"><i class="fa fa-angle-right" aria-hidden="true"></i></span>Pet Helpcare</a></li>
+							<li><a href="#"><span class="icon"><i class="fa fa-angle-right" aria-hidden="true"></i></span>宠物收容所</a></li>
+							<li><a href="#"><span class="icon"><i class="fa fa-angle-right" aria-hidden="true"></i></span>快乐的宠物</a></li>
+							<li><a href="#"><span class="icon"><i class="fa fa-angle-right" aria-hidden="true"></i></span>宠物日常护理</a></li>
+							<li><a href="#"><span class="icon"><i class="fa fa-angle-right" aria-hidden="true"></i></span>宠物训练</a></li>
+							<li><a href="#"><span class="icon"><i class="fa fa-angle-right" aria-hidden="true"></i></span>帮助宠物</a></li>
 						</ul>
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-3">
-						<h3>Instagram</h3>
+						<h3>照片墙</h3>
 						<ul class="insta-list list-unstyled">
 							<li><a href="#"><img src="images/img27.jpg" alt="footer-img" class="img-responsive"></a></li>
 							<li><a href="#"><img src="images/img28.jpg" alt="footer-img" class="img-responsive"></a></li>
@@ -303,9 +338,9 @@
 						</ul>
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-3">
-						<h3>Newsletter</h3>
+						<h3>电子邮件</h3>
 						<div class="newsletter">
-							<p>It is a long established fact that a by <br class="hidden-xs">the readable content</p>
+							<p>欢迎联系我们！！！</p>
 							<form class="newsletter-form" action="#">
 								<fieldset>
 									<input class="form-control" placeholder="Email" type="email">
