@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import java.util.List;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+
+
 import yc.rng.pet.bean.Pets;
 
 @Repository
@@ -14,6 +16,10 @@ public class PetDao extends BaseDao{
 	 * 展示首页商品
 	 * @return
 	 */
+	public List<Pets> selectAllP(){
+		String sql="select *from Pets";
+		return jt.query(sql, petRowMapper); 
+	}
 	public List<Pets> selectPetHot(){
 		String sql = "select * from pets where pid limit 0,9";
 		return jt.query(sql, petRowMapper);
@@ -69,5 +75,16 @@ public class PetDao extends BaseDao{
 			pet.setCid(rs.getInt("cid"));
 			return pet;
 		}};
+
+		public void insert(Pets p) {
+			String sql = "insert into pets values(null,?,?,?,?,?,?)";
+			jt.update(sql,
+			p.getPname(),
+			p.getPrice(),
+			p.getImage(),
+			p.getPdesc(),
+			p.getState(),
+			p.getCid());
+		}
 
 }
