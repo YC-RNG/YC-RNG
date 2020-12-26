@@ -1,11 +1,8 @@
 package yc.rng.pet.bean;
 
-import java.sql.Timestamp;
 import java.util.Date;
 
-import javax.validation.constraints.NotEmpty;
 
-import org.hibernate.validator.constraints.Length;
 
 public class User implements java.io.Serializable {
 
@@ -20,8 +17,30 @@ public class User implements java.io.Serializable {
 	private Integer state;
 	private Date createtime;
 	private String addr;
+	private String code;
+	private String email;
+
 	
-	
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public String getCode() {
+		return code;
+	}
+
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+
 	public Integer getUid() {
 		return uid;
 	}
@@ -122,7 +141,7 @@ public class User implements java.io.Serializable {
 	public String toString() {
 		return "User [uid=" + uid + ", username=" + username + ", account=" + account + ", password=" + password
 				+ ", phone=" + phone + ", sex=" + sex + ", state=" + state + ", createtime=" + createtime + ", addr="
-				+ addr + "]";
+				+ addr + ", code=" + code + ", email=" + email + "]";
 	}
 
 

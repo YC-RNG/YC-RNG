@@ -175,6 +175,11 @@
 											<input class="form-control " placeholder="" type="text"
 											name="password" v-model="user.password">
 											
+											<label>邮箱<span class="sign">*</span></label>
+											<span class="e"></span><br>
+											<input class="form-control" placeholder="" type="text"
+											name="email" v-model="user.email">
+											
 											<label>性别<span class="sign"></span></label>
 											<span class=></span><br>
 											<input class="form-control " placeholder="" type="text"
@@ -212,7 +217,7 @@
 									account:"",
 									password:"",
 									username:"",
-									
+									email:"",
 									phone:"",
 									
 									state:"",
@@ -229,9 +234,11 @@
 									params.append("account",this.user.account);
 									params.append("password",this.user.password);
 									params.append("username",this.user.username);
+									params.append("email",this.user.email);
 									params.append("phone",this.user.phone);
 									params.append("sex",this.user.sex);
 									params.append("addr",this.user.addr);
+									
 									
 									axios.post("reg",params).then(res=>{
 										alert(res.data.msg);

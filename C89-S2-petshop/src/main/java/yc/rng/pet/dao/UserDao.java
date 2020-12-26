@@ -26,11 +26,11 @@ public class UserDao extends BaseDao{
 	 * @throws SQLException
 	 */
 	public void insert(User user) throws SQLException {
-		String sql = "insert into user values(null,?,?,?,?,?,1,now(),?)";
+		String sql = "insert into user values(null,?,?,?,?,?,1,now(),?,null,?)";
 		jt.update(sql,
 				user.getUsername(),user.getAccount(),
 				user.getPassword(),user.getPhone(),
-				user.getSex(),user.getAddr());
+				user.getSex(),user.getAddr(),user.getEmail());
 	}
 	
 	/**
@@ -63,9 +63,23 @@ public class UserDao extends BaseDao{
 	 * @return
 	 * @throws BizException
 	 */
-	public User login(int account, String password,HttpSession session) throws BizException {
-		return ubiz.login(account,password,session);
+	public User login(int account, String password,String vcode,HttpSession session) throws BizException {
+		return ubiz.login(account,password,vcode,session);
 	}
+	
+	/**
+	 * 根据account修改密码
+	 * @param account
+	 * @param paasword
+	 */
+	public void updatePwdByAccount(String password, int account) {
+		String sql = "update user set password=? where account=?";
+		jt.update(sql,password,account);
+	}
+	
+	
+	
+	
 	
 	/**
 	 * userRowMapper
@@ -84,6 +98,8 @@ public class UserDao extends BaseDao{
 			user.setAddr(rs.getString("addr"));
 			user.setState(rs.getInt("state"));
 			user.setCreatetime(rs.getDate("createtime"));
+			user.setCode(rs.getString("code"));
+			user.setEmail(rs.getString("email"));
 			return user;
 		}
 		

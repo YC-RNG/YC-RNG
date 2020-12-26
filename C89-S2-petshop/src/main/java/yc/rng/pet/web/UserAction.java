@@ -43,10 +43,10 @@ public class UserAction {
 	}
 	
 	@RequestMapping("login")
-	public Result login(int account,String password,HttpSession session) throws IOException, EncodeException {
+	public Result login(int account,String password,HttpSession session,String vcode) throws IOException, EncodeException {
 		User user;
 		try {
-			user = udao.login(account,password,session);
+			user = udao.login(account,password,vcode,session);
 			session.setAttribute("loginedUser", user);
 			return new Result(1, "登录成功");
 		} catch (BizException e) {
@@ -56,5 +56,15 @@ public class UserAction {
 		
 	}
 	
+	@RequestMapping("sendVcode")
+	public String sendVcode(int account ,HttpSession session) {
+		String vcode = ubiz.sendVcode(account);
+		session.setAttribute("vcode", vcode);
+		return "验证码发送成功！";
+	}
 
+	@RequestMapping("resetPwd")
+	public String resetPwd(int account,String password,String vcode,HttpSession session) throws BizException {
+		return ubiz.resetPwd(account, password, vcode, (String)session.getAttribute("vcode"));
+	}
 }

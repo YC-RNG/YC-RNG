@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="zh-CN" xmlns:th="www.thymeleaf.org">
 <head>
 	<!-- set the encoding of your site -->
 	<meta charset="utf-8">
@@ -22,18 +21,8 @@
 	<link rel="stylesheet" type="text/css" href="css/plugins.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-	<script
-		src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
-	<script type="text/javascript">
-		function checkImg(){
-		// 更新验证码
-		}
-	</script>
-	<style type="text/css">
-	.e{
-		color:red
-	}
-</style>
+<script
+	src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
 </head>
 <body>
 	<div id="wrapper">
@@ -70,7 +59,7 @@
 						</ul>
 					</div>
 					<div class="col-xs-12 col-sm-6 hidden-xs">
-						<div class="social-list">
+						<div id="user" class="social-list">
 							<ul class="list-unstyled social-network">
 								<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
 								<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
@@ -78,10 +67,42 @@
 							</ul>
 							<ul class="list-unstyled account-cart">
 							
-								<li><a href="login.html"><i class="icon-user"></i><span class="hidden-xs">登录/注册</span></a></li>
+								<li><a href="login.html"><i class="icon-user"></i>
+								<span v-if=" user=='' " class="hidden-xs">登录/注册</span></a>
+								<span v-if="user!=null" class="hidden-xs">{{user.username}}</span>
+								</li>
+								
+								<li><i class="icon-cart"></i><span @click="logout()" class="hidden-xs">退出</span></li>
 								<li><a href="#"><i class="icon-cart"></i><span class="hidden-xs">购物车</span></a></li>
 							</ul>
 						</div>
+						
+						<script type="text/javascript">
+			var v2 = new Vue({
+				el:"#user",
+				data:{
+					user:{}
+				},
+				created(){
+					axios.get("getLoginedUser").then(res=>{
+						this.user = res.data;
+					})
+				},
+				methods:{
+					logout(){
+						if(confirm("确定要退出登录?")){
+							axios.get("out").then(res=>{
+								alert(res.data.msg);
+								location.href = "index.html";
+							});
+						}
+					}
+				}
+			})
+		
+		
+		</script>
+						
 					</div>
 				</div>
 			</div>
@@ -128,106 +149,131 @@
 				</div>
 			</div>
 		</header>
-				<main id="main">
+		<main id="main">
 			<section class="hero-sec bg-full" style="background-image:url(images/img33.jpg);">
 				<div class="caption">
-					<h1 class="heading text-center">登陆</h1>
+					<h1 class="heading text-center">购物车</h1>
 				</div>
 			</section>
-			<section id="userlogin" class="check-sec container">
+			
+			
+			<section id="usercart" class="cart-content-block container">
+				<div class="row">
+					<div class="col-xs-12"> 
+						<div class="table-responsive">
+							<table class="table cart-data-table">
+								<thead>
+									<tr>
+										<th class="Product text-center">商品</th>
+										<th class="price text-center">价格</th>
+										<th class="Quantity text-center">数量</th>
+										<th class="Total text-center">总价</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr  v-for="pet in plist">
+										<td class="Product">
+											<a href="cart.html" @click="deleteCart(pet.pid)" class="btn-remove fa fa-times"></a>
+											<div class="img-holder">
+												<img :src="pet.image" alt="image description" class="img-responsive">
+											</div>
+											<span class="descr-wrap">{{pet.pname}}</span>
+										</td>
+										<td class="price"><span><strong class="price element-block"> ${{pet.price}}</strong></span></td>
+										<td class="Quantity">
+											<input type="number" class="form-control text-center" min="0" value="1">
+										</td>
+										<td class="Total"><strong class="element-block price"> ${{pet.price*pet.count}}</strong></td>
+									</tr>
+									
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="col-xs-12 coupon-wrap">
+						<div class="coupon-code pull-left">
+							<input class="form-control" placeholder="优惠券代码" type="text">
+							<button type="submit" class="btn-primary text-center text-uppercase  pull-right">使用优惠券</button>
+						</div>
+						<a href="cart.html" @click="clearCart()" class="btn-primary updatebtn text-center text-uppercase pull-right">清空购物车</a>
+					</div>
+				</div>
 				<div class="row">
 					<div class="col-xs-12">
-						<form class="checkout-form text-left"  method="post">
-							<fieldset>
-								<div class="row">
-									<div class="col-xs-12 col-sm-6">
-										<h2>用户信息</h2>
-										<div class="form-group">
-												
-											<label>账号 <span class="sign"></span></label>
-											<input class="form-control " placeholder="" type="text"
-											 name="account" v-model="account">
-
-											<label>密码<span class="sign"></span></label>
-											<input class="form-control " placeholder="" type="password"
-											name="password" v-model="password">
-											
-											<label>验证码:<span class="sign">&nbsp;&nbsp;&nbsp;&nbsp;
-											<img id="captchaImage" class="captchaImage" :src="imgsrc"
-														height="30px;" title="点击更换验证码" @click="changeImg()"></label>
-											 <input class="form-control " placeholder="" type="text"
-											name="vcode" v-model="vcode">
-											
-											
-
-											<tr>
-												<th>&nbsp;</th>
-												<td><input @click="login()" type="button" class="submit" value="登陆">
-												</td>
-											</tr>
-											<tr class="reg">
-												<th>&nbsp;</th>
-												<td>
-													<dl>
-														<label>还没有注册账号？&nbsp;&nbsp;&nbsp;&nbsp;<a href="reg.html">立即注册</a></label>
-														
-													</dl>
-													<dl>
-														<label>忘记密码？&nbsp;&nbsp;&nbsp;&nbsp;<a href="resetpwd.html">重置密码</a></label>
-														
-													</dl>
-												</td>
-											</tr>
-
-										</div>
-									</div>
-								</div>
-							</fieldset>
-						</form>
+						<div class="table-wrap pull-right">
+							<h2>购物车总价</h2>
+							<ul class="list-unstyled cart-total">
+								<li>
+									<strong class="title pull-left">小计</strong>
+									<strong class="price pull-right">${{sum}}</strong>
+								</li>
+								<li>
+									<strong class="title pull-left">总价</strong>
+									<strong class="price pull-right">${{sum}}</strong>
+								</li>
+							</ul>
+							<a href="checkout.html" class="btn-primary text-center text-uppercase">提交订单</a>
+						</div>
 					</div>
 				</div>
 			</section>
 			
 			<script type="text/javascript">
-						new Vue({
-							el:"#userlogin",
-							data:{
-								account:"",
-								password:"",
-								vcode:"",
-								imgsrc:"verifyCode.s?a="
-							},
-							methods:{
-								changeImg(){
-									this.imgsrc += new Date();
-								},
-								login(){
-									var params = new URLSearchParams();
-									params.append("account",this.account);
-									params.append("password",this.password);
-									params.append("vcode",this.vcode);
-									axios.post("login",params).then(res=>{
-										alert(res.data.msg);
-										if(res.data.code == 1){
-											location.href="index.html";
-										}
-									}).catch(error=>{
-										alert("系统错误，请联系管理员");
-									})
-								}
-							}
-						})
-					
-					</script>
+			var v1 = new Vue({
+				el :"#usercart",
+				data :{
+					plist:[]
+				},
+				created(){
+					axios.get("getLoginedUser").then(res=>{
+						if( res.data && res.data.uid ){
+							//console.log(this.$refs.counts.value);
+							axios.get("queryCart").then(res=>{
+								this.plist = res.data;
+							});
+						}else {
+							alert("你尚未登录");
+							location.href = "login.html";
+						}
+					});
+				},
+				computed:{
+					sum(){
+						var sum = 0;
+						for(var i in this.plist){
+					           sum+=this.plist[i].price*this.plist[i].count;
+					       }
+					    return sum;
+					}
+				},
+				methods:{
+					deleteCart(pid){
+						if(confirm("确定删除该商品?")){
+							axios.get("deleteCart?pid="+pid).then(res=>{
+								alert(res.data.msg);
+							})
+						}
+					},
+					clearCart(){
+						if(confirm("确定要清空购物车?")){
+							axios.get("clearCart").then(res=>{
+								alert(res.data.msg);
+							})
+						}
+					}
+				}
+			})
+		
+		</script>
 			
-<section class="callout" style="background-image:url(images/img26.jpg);">
+			<section class="callout" style="background-image:url(images/img26.jpg);">
 				<div class="container">
 					<div class="row">
 						<div class="col-xs-12 col-sm-6">
-							<h2>获得所有宠物产品的50%的报价</h2>
+							<h2>Get 50% offer for all pet products</h2>
 						</div>
 						<div class="col-xs-12 col-sm-6">
-							<a class="btn-primary text-uppercase text-center lg-round" href="#">优惠价代码 : PETTY1234</a>
+							<a class="btn-primary text-uppercase text-center lg-round" href="#">coupon code : PETTY1234</a>
 						</div>
 					</div>
 				</div>
@@ -284,5 +330,8 @@
 			</div>
 		</footer>
 	</div>
+	<script src="js/jquery.js"></script>
+	<script src="js/plugins.js"></script>
+	<script src="js/jquery.main.js"></script>
 </body>
 </html>

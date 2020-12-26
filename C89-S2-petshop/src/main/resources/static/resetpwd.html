@@ -134,50 +134,36 @@
 					<h1 class="heading text-center">登陆</h1>
 				</div>
 			</section>
-			<section id="userlogin" class="check-sec container">
+			<section id="resetpwd" class="check-sec container">
 				<div class="row">
 					<div class="col-xs-12">
 						<form class="checkout-form text-left"  method="post">
 							<fieldset>
 								<div class="row">
 									<div class="col-xs-12 col-sm-6">
-										<h2>用户信息</h2>
+										<h2>重置密码</h2>
 										<div class="form-group">
 												
-											<label>账号 <span class="sign"></span></label>
+											<label>您的账号 <span class="sign"></span></label>
 											<input class="form-control " placeholder="" type="text"
 											 name="account" v-model="account">
 
-											<label>密码<span class="sign"></span></label>
+											<label>新密码<span class="sign"></span></label>
 											<input class="form-control " placeholder="" type="password"
 											name="password" v-model="password">
 											
-											<label>验证码:<span class="sign">&nbsp;&nbsp;&nbsp;&nbsp;
-											<img id="captchaImage" class="captchaImage" :src="imgsrc"
-														height="30px;" title="点击更换验证码" @click="changeImg()"></label>
+											<br>
+											<label>验证码:<span class="sign"></label>
 											 <input class="form-control " placeholder="" type="text"
 											name="vcode" v-model="vcode">
 											
-											
-
 											<tr>
 												<th>&nbsp;</th>
-												<td><input @click="login()" type="button" class="submit" value="登陆">
+												<td><input @click="sendVcode()" type="button" class="submit" value="获取验证码"><br><br><br><br><br><br>
+												<td><input @click="change()" type="button" class="submit" value="重置密码">
 												</td>
 											</tr>
-											<tr class="reg">
-												<th>&nbsp;</th>
-												<td>
-													<dl>
-														<label>还没有注册账号？&nbsp;&nbsp;&nbsp;&nbsp;<a href="reg.html">立即注册</a></label>
-														
-													</dl>
-													<dl>
-														<label>忘记密码？&nbsp;&nbsp;&nbsp;&nbsp;<a href="resetpwd.html">重置密码</a></label>
-														
-													</dl>
-												</td>
-											</tr>
+										
 
 										</div>
 									</div>
@@ -189,36 +175,35 @@
 			</section>
 			
 			<script type="text/javascript">
-						new Vue({
-							el:"#userlogin",
-							data:{
-								account:"",
-								password:"",
-								vcode:"",
-								imgsrc:"verifyCode.s?a="
-							},
-							methods:{
-								changeImg(){
-									this.imgsrc += new Date();
-								},
-								login(){
-									var params = new URLSearchParams();
-									params.append("account",this.account);
-									params.append("password",this.password);
-									params.append("vcode",this.vcode);
-									axios.post("login",params).then(res=>{
-										alert(res.data.msg);
-										if(res.data.code == 1){
-											location.href="index.html";
-										}
-									}).catch(error=>{
-										alert("系统错误，请联系管理员");
-									})
-								}
-							}
-						})
-					
-					</script>
+				new Vue({
+					el:"#resetpwd",
+					data:{
+						account:"",
+						password:"",
+						vcode:""
+					},
+					methods:{
+						sendVcode(){
+							var params = new URLSearchParams();
+							params.append("account",this.account);
+							axios.post("sendVcode",params).then(res=>{
+								alert(res.data);
+							})
+						},
+						change(){
+							var params = new URLSearchParams();
+							params.append("account",this.account);
+							params.append("password",this.password);
+							params.append("vcode",this.vcode);
+							axios.post("resetPwd",params).then(res=>{
+								alert(res.data);
+							})
+						}
+					}
+				})
+			</script>
+			
+			
 			
 <section class="callout" style="background-image:url(images/img26.jpg);">
 				<div class="container">

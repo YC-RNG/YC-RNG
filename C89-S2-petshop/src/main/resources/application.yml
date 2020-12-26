@@ -38,8 +38,8 @@ logging:
   level:
     # 下面是对指定的包下的日志输出进行设定
     # 日志级别： debug， info， warn， error
-    com:
-      yc:
-        damai:
+    yc:
+      rng:
+        pet:
           dao: debug
           web: warn
