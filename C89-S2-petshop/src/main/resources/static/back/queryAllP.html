@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>商品信息</title>
+	<link rel="stylesheet" type="text/css" href="easyui/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="easyui/themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="../demo.css">
+	<script type="text/javascript" src="easyui/jquery.min.js"></script>
+	<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+</head>
+<body>
+	<h2>商品列表</h2>
+	<p>商品信息</p>
+	<div style="margin:20px 0;"></div>
+	
+	<table class="easyui-datagrid" title="商品信息" style="width:1200px;height:700px"
+			data-options="
+			   url:'../queryAllP',
+			   method:'get'">
+		<thead>
+			<tr>
+				<th data-options="field:'pid',width:80,align:'center'">编号</th>
+				<th data-options="field:'pname',width:100,align:'center'">商品名称</th>
+				<th data-options="field:'price',width:80,align:'center'">商场价格</th>
+				<th data-options="field:'image',width:100,align:'center',formatter:a">图片</th>
+				<th data-options="field:'pdesc',width:700,align:'center'">描述</th>
+		
+			</tr>
+		</thead>
+		
+	</table>
+	<script type="text/javascript">
+	    function a(value,obj,row){
+	    	return "<img width='100%' src='../"+value+"'>"
+	    }
+	
+	
+	</script>
+
+</body>
+</html>
