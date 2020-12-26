@@ -49,9 +49,9 @@ public class CartDao extends BaseDao{
 	 * @param iUid
 	 * @throws SQLException
 	 */
-	public void clearCart(Integer iUid) throws SQLException {
+	public void clearCart(int uid) throws SQLException {
 		String sql = "delete from cart where uid = ?";
-		jt.update(sql, iUid);
+		jt.update(sql, uid);
 	}
 
 	public void deleteCart(int pid) {

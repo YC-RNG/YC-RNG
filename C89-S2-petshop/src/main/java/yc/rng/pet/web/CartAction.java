@@ -1,5 +1,6 @@
 package yc.rng.pet.web;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -16,6 +17,20 @@ public class CartAction {
 	@Resource
 	private CartDao cdao;
 	
+	@RequestMapping("clearCart")
+	public Result clearCart(HttpSession session) throws SQLException {
+		User user = (User) session.getAttribute("loginedUser");
+		cdao.clearCart(user.getUid());;
+		// 返回结果
+		return Result.success("清空购物车成功!");
+	}
+	
+	/**
+	 * 删除购物车商品
+	 * @param pid
+	 * @param session
+	 * @return
+	 */
 	@RequestMapping("deleteCart")
 	public Result deleteCart(int pid, HttpSession session) {
 		cdao.deleteCart(pid);
