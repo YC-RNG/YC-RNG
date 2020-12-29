@@ -1,9 +1,11 @@
 package yc.rng.pet.bean;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Orderitem implements java.io.Serializable{
 	
 	private static final long serialVersionUID = 1L;
-	
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8") 
 	private Integer itemid;
 	private Integer count;
 	private Double subtotal;

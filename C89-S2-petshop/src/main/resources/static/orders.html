@@ -73,7 +73,7 @@
 								</li>
 								
 								<li><i class="icon-cart"></i><span @click="logout()" class="hidden-xs">退出</span></li>
-								<li><a href="#"><i class="icon-cart"></i><span class="hidden-xs">购物车</span></a></li>
+								<li><a href="cart.html"><i class="icon-cart"></i><span class="hidden-xs">购物车</span></a></li>
 							</ul>
 						</div>
 						
@@ -163,8 +163,8 @@
 							<table v-for="o in olist" class="table cart-data-table">
 								<thead>
 									<tr>
-										<th colspan="5">订单号:{{o.oid}} 地址:{{o.addr}} 下单时间:{{o.createtime}} 金额:<font color="red">{{o.total}}
-										</font> 状态 : <a href="pay.html?oid=73"><font color="red">付款</font></a>
+										<th colspan="5">订单号:{{o.oid}} &nbsp; 下单时间:{{o.createtime}}&nbsp; 地址:{{o.addr}}&nbsp; 联系方式：{{o.phone}}&nbsp; 金额:<font color="red">{{o.total}}
+										</font> 状态 : <a href="pay.html?oid=73"><font color="red">未付款</font></a>
 
 										</th>
 									</tr>
@@ -185,10 +185,11 @@
 											<div class="img-holder">
 												<img :src="o.image" alt="image description" class="img-responsive">
 											</div>
-											<span class="descr-wrap">{{o.pname}}</span>
+											
 										</td>
-										<td class="price"><span><strong class="price element-block"> {{o.count}}</strong></span></td>
-										<td class="Total"><strong class="element-block price"> ${{o.subtotal}}</strong></td>
+										<td class="price"><span><strong class="price text-center"> {{o.pname}}</strong></span></td>
+										<td class="price"><span><strong class="Quantity text-center"> {{o.count}}</strong></span></td>
+										<td class="Total"><strong class="Total text-center"> ${{o.subtotal}}</strong></td>
 									</tr>
 									
 								</tbody>

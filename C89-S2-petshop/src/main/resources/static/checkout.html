@@ -168,12 +168,12 @@
 											<div class="holder">
 												
 											<label>地址</label>
-											<input v-model="addr" class="form-control" placeholder="" type="text">
+											<input v-model="order.addr" class="form-control" placeholder="" type="text">
 											<div class="holder">
-												<
+												
 												<div class="col">
 													<label>联系方式<span class="sign">*</span></label>
-													<input v-model="phone" class="form-control element-block" placeholder="" type="text">
+													<input v-model="order.phone" class="form-control element-block" placeholder="" type="text">
 												</div>
 											</div>
 											
@@ -268,7 +268,11 @@
 			var v1 = new Vue({
 				el :"#main",
 				data :{
-					plist:[]
+					plist:[],
+					order:{
+						addr:"",
+						phone:""
+					}
 				},
 				created(){
 					axios.get("getLoginedUser").then(res=>{
@@ -296,14 +300,16 @@
 					addorders(){
 						if(confirm("确认提交?")){
 							var params = new URLSearchParams();
-							params.append("addr",this.addr);
-							params.append("phone",this.phone);
+							params.append("addr",this.order.addr);
+							params.append("phone",this.order.phone);
 							axios.post("insertOrders",params).then(res=>{
 								alert(res.data.msg);
+								if(res.data.code == 1){
 								location.href = "orders.html";
+								}
+							}).catch(error=>{
+								alert("系统错误，请联系管理员");
 							})
-						}else{
-							alert("系统错误");
 						}
 					}
 				},

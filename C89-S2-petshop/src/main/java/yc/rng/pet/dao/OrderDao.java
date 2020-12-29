@@ -75,7 +75,7 @@ public class OrderDao extends BaseDao{
 				+ "where a.uid=?", uid);
 	}
 	
-	
+	 
 	
 	
 	private RowMapper<Orderitem> orderitemRowMapper = new RowMapper<Orderitem>() {
@@ -104,7 +104,7 @@ public class OrderDao extends BaseDao{
 			orders.setPhone(rs.getString("phone"));
 			orders.setUid(rs.getInt("uid"));
 			return orders;
-		}};
+		}}; 
 
 
 	public List<Orderitem> selectByOid(Integer oid) {

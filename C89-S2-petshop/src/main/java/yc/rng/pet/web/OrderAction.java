@@ -33,13 +33,13 @@ public class OrderAction {
 			orders.setPhone(phone);
 			orders.setAddr(addr);
 			obiz.pay(orders);
-			return Result.success("下单成功!");
+			return new Result(1, "提交成功！");
 		} catch (Exception e) {
 			e.printStackTrace();
-			return Result.failure(e.getMessage());
+			return new Result(0, e.getMessage());		
 		}
 	}
-	 
+	  
 	/**
 	 * 查询用户订单
 	 * @param session

@@ -180,7 +180,7 @@
 										<span class="price">${{pet.price}}</span>		
 									</div>
 									<div class="text-center">
-										<a href="shop-detail.html" class="btn-primary lg-round text-uppercase"><i class="icon-cart"></i>加入购物车</a>
+										<a :href="'shop-detail.html#'+pet.pid"  class="btn-primary lg-round text-uppercase"><i class="icon-cart"></i>加入购物车</a>
 									</div>
 									
 								</div>
@@ -195,7 +195,8 @@
 										axios.get("queryHotPet").then(res=>{
 											this.plist = res.data;
 										})
-									}
+									},
+									
 								})
 								</script>
 							<ul class="pagination list-unstyled text-center">

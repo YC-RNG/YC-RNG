@@ -27,7 +27,7 @@ public class OrdersBiz {
 		Utils.checkNull(orders.getAddr(), "请填写收货地址");
 		Utils.checkNull(orders.getPhone(), "请填写收货人电话");
 		
-		// 计算总金额
+		// 计算总金额 
 		Double total = cdao.selectTotalByUid(orders.getUid());
 		orders.setTotal(total);
 		
