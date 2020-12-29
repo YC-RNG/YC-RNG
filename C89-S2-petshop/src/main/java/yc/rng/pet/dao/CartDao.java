@@ -85,4 +85,19 @@ public class CartDao extends BaseDao{
 			return cart;
 		}
 	};
+
+	public Double selectTotalByUid(Integer uid) {
+		String sql = "SELECT\n" + "	sum(count * b.price)\n" + "FROM\n" + "	cart a\n"
+				+ "JOIN pets b ON a.pid = b.pid\n" + "WHERE\n" + "	uid = ?";
+		return jt.queryForObject(sql, Double.class, uid);
+	}
+
+	/**
+	 * 根据用户id 删除购物车
+	 * 
+	 * @param uid
+	 */
+	public void deleteByUid(Integer uid) {
+		jt.update("delete from cart where uid=?", uid);
+	}
 }

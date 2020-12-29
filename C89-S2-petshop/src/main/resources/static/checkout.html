@@ -128,9 +128,8 @@
 									<a href="javascript:void(0);">商店页 <i class="fa fa-angle-down"></i></a>
 									<ul class="list-unstyled text-uppercase dropdown">
 										<li><a href="shop.html">商店</a></li>
-										<li><a href="shop-detail.html">商品详情</a></li>
+										<li><a href="orders.html">我的订单</a></li>
 										<li><a href="cart.html">购物车</a></li>
-										<li><a href="checkout.html">结算</a></li>
 									</ul>
 								</li>
 								<li class="logo hidden-xs"><a href="index.html"><img class="img-responsive" src="images/logo.png" alt="PetShop"></a></li>
@@ -167,18 +166,14 @@
 										<h2>订单信息</h2>
 										<div class="form-group">
 											<div class="holder">
-												<div class="col">
-													<label>姓名 <span class="sign">*</span></label>
-													<input class="form-control element-block" placeholder="" type="text">
-												</div>
-											</div>
+												
 											<label>地址</label>
-											<input class="form-control" placeholder="" type="text">
+											<input v-model="addr" class="form-control" placeholder="" type="text">
 											<div class="holder">
 												<
 												<div class="col">
 													<label>联系方式<span class="sign">*</span></label>
-													<input class="form-control element-block" placeholder="" type="text">
+													<input v-model="phone" class="form-control element-block" placeholder="" type="text">
 												</div>
 											</div>
 											
@@ -222,7 +217,7 @@
 									总价格
 									</td>
 									<td>
-									<strong id="effectivePrice">￥{{sum}}元</strong>
+									<strong id="effectivePrice" >${{sum}}元</strong>
 									</td>
 							
 						</table>
@@ -249,7 +244,7 @@
 										<a href="#">What is Paypal?</a>
 									</label>
 								</div>
-								<input type="submit" value="提交订单" class="text-uppercase submit-btn">
+								<input @click="addorders()" type="submit" value="提交订单" class="text-uppercase submit-btn">
 							</form>
 						</div>
 					</div>
@@ -296,7 +291,22 @@
 					       }
 					    return sum;
 					}
-				}
+				},
+				methods:{
+					addorders(){
+						if(confirm("确认提交?")){
+							var params = new URLSearchParams();
+							params.append("addr",this.addr);
+							params.append("phone",this.phone);
+							axios.post("insertOrders",params).then(res=>{
+								alert(res.data.msg);
+								location.href = "orders.html";
+							})
+						}else{
+							alert("系统错误");
+						}
+					}
+				},
 			})
 		
 		</script>

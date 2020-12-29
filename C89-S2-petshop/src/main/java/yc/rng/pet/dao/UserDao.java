@@ -31,9 +31,9 @@ public class UserDao extends BaseDao{
 				user.getUsername(),user.getAccount(),
 				user.getPassword(),user.getPhone(),
 				user.getSex(),user.getAddr(),user.getEmail());
-	}
+	} 
 	
-	/**
+	/** 
 	 * 通过account查询用户
 	 * @param user
 	 * @throws SQLException

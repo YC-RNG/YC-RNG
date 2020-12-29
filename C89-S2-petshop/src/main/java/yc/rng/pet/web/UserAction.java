@@ -34,7 +34,7 @@ public class UserAction {
 			e.printStackTrace();
 			return new Result(0, e.getMessage());
 		} 
-	}
+	} 
 	 
 	@RequestMapping("getLoginedUser")
 	public User getLoginedUser(String username,HttpSession session) {

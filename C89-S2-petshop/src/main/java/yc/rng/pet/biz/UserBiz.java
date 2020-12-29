@@ -36,7 +36,7 @@ public class UserBiz {
 		Utils.checkNull(user.getSex(), "性别不能为空");
 		Utils.checkNull(user.getAddr(), "地址不能为空");
 		Utils.checkNull(user.getEmail(), "邮箱不能为空");
-		
+		 
 		// 同名验证
 		User dbuser = udao.selectByAccount(user.getAccount());
 		if(dbuser != null) {

@@ -129,9 +129,8 @@
 									<a href="javascript:void(0);">商店页 <i class="fa fa-angle-down"></i></a>
 									<ul class="list-unstyled text-uppercase dropdown">
 										<li><a href="shop.html">商店</a></li>
-										<li><a href="shop-detail.html">商品详情</a></li>
+										<li><a href="orders.html">我的订单</a></li>
 										<li><a href="cart.html">购物车</a></li>
-										<li><a href="checkout.html">结算</a></li>
 									</ul>
 								</li>
 								<li class="logo hidden-xs"><a href="index.html"><img class="img-responsive" src="images/logo.png" alt="PetShop"></a></li>
@@ -152,7 +151,7 @@
 		<main id="main">
 			<section class="hero-sec bg-full" style="background-image:url(images/img33.jpg);">
 				<div class="caption">
-					<h1 class="heading text-center">购物车</h1>
+					<h1 class="heading text-center">我的订单</h1>
 				</div>
 			</section>
 			
@@ -160,111 +159,69 @@
 			<section id="usercart" class="cart-content-block container">
 				<div class="row">
 					<div class="col-xs-12"> 
-						<div class="table-responsive">
-							<table class="table cart-data-table">
+						<div id="olist" class="table-responsive">
+							<table v-for="o in olist" class="table cart-data-table">
 								<thead>
 									<tr>
-										<th class="Product text-center">商品</th>
-										<th class="price text-center">价格</th>
-										<th class="Quantity text-center">数量</th>
-										<th class="Total text-center">总价</th>
+										<th colspan="5">订单号:{{o.oid}} 地址:{{o.addr}} 下单时间:{{o.createtime}} 金额:<font color="red">{{o.total}}
+										</font> 状态 : <a href="pay.html?oid=73"><font color="red">付款</font></a>
+
+										</th>
+									</tr>
+									<tr>
+										<th class="Product text-center">商品图片</th>
+										<th class="price text-center">商品名</th>
+										<th class="Quantity text-center">商品数量</th>
+										<th class="Total text-center">单价</th>
 									</tr>
 								</thead>
-								<tbody>
-									<tr  v-for="pet in plist">
-										<td class="Product">
-											<a href="cart.html" @click="deleteCart(pet.pid)" class="btn-remove fa fa-times"></a>
+								
+								
+								<tbody >
+								
+									<tr>
+										<td class="Product text-center">
+											
 											<div class="img-holder">
-												<img :src="pet.image" alt="image description" class="img-responsive">
+												<img :src="o.image" alt="image description" class="img-responsive">
 											</div>
-											<span class="descr-wrap">{{pet.pname}}</span>
+											<span class="descr-wrap">{{o.pname}}</span>
 										</td>
-										<td class="price"><span><strong class="price element-block"> ${{pet.price}}</strong></span></td>
-										<td class="Quantity">
-											<input type="number" class="form-control text-center" min="0" value="1">
-										</td>
-										<td class="Total"><strong class="element-block price"> ${{pet.price*pet.count}}</strong></td>
+										<td class="price"><span><strong class="price element-block"> {{o.count}}</strong></span></td>
+										<td class="Total"><strong class="element-block price"> ${{o.subtotal}}</strong></td>
 									</tr>
 									
 								</tbody>
 							</table>
 						</div>
-					</div>
-					<div class="col-xs-12 coupon-wrap">
-						<div class="coupon-code pull-left">
-							<input class="form-control" placeholder="优惠券代码" type="text">
-							<button type="submit" class="btn-primary text-center text-uppercase  pull-right">使用优惠券</button>
-						</div>
-						<a href="cart.html" @click="clearCart()" class="btn-primary updatebtn text-center text-uppercase pull-right">清空购物车</a>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-12">
-						<div class="table-wrap pull-right">
-							<h2>购物车总价</h2>
-							<ul class="list-unstyled cart-total">
-								<li>
-									<strong class="title pull-left">小计</strong>
-									<strong class="price pull-right">${{sum}}</strong>
-								</li>
-								<li>
-									<strong class="title pull-left">总价</strong>
-									<strong class="price pull-right">${{sum}}</strong>
-								</li>
-							</ul>
-							<a href="checkout.html" class="btn-primary text-center text-uppercase">提交订单</a>
-						</div>
+
+						<script type="text/javascript">
+							var v5=	new Vue({
+								el:"#olist",
+								data:{
+									olist:{},
+									
+								},
+								created(){
+									axios.get("getLoginedUser").then(res=>{
+										if( res.data && res.data.uid ){
+											axios.get("queryOrders").then(res=>{
+												this.olist = res.data;
+											})
+										}else {
+											alert("你尚未登录");
+											location.href = "login.html";
+										}
+									});
+								},
+							})
+							</script>
+		
+						
 					</div>
 				</div>
 			</section>
 			
-			<script type="text/javascript">
-			var v1 = new Vue({
-				el :"#usercart",
-				data :{
-					plist:[]
-				},
-				created(){
-					axios.get("getLoginedUser").then(res=>{
-						if( res.data && res.data.uid ){
-							//console.log(this.$refs.counts.value);
-							axios.get("queryCart").then(res=>{
-								this.plist = res.data;
-							});
-						}else {
-							alert("你尚未登录");
-							location.href = "login.html";
-						}
-					});
-				},
-				computed:{
-					sum(){
-						var sum = 0;
-						for(var i in this.plist){
-					           sum+=this.plist[i].price*this.plist[i].count;
-					       }
-					    return sum;
-					}
-				},
-				methods:{
-					deleteCart(pid){
-						if(confirm("确定删除该商品?")){
-							axios.get("deleteCart?pid="+pid).then(res=>{
-								alert(res.data.msg);
-							})
-						}
-					},
-					clearCart(){
-						if(confirm("确定要清空购物车?")){
-							axios.get("clearCart").then(res=>{
-								alert(res.data.msg);
-							})
-						}
-					}
-				}
-			})
-		
-		</script>
 			
 			<section class="callout" style="background-image:url(images/img26.jpg);">
 				<div class="container">

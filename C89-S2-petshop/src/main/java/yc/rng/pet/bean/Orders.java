@@ -2,7 +2,7 @@ package yc.rng.pet.bean;
 
 import java.sql.Date;
 
-public class Orders implements java.io.Serializable {
+public class Orders implements java.io.Serializable { 
 
 	/**
 	 * 
@@ -11,12 +11,11 @@ public class Orders implements java.io.Serializable {
 
 	private Integer oid;
 	private Double total;
-	private Date ordertime;
-	private Integer state;
+	private Date createtime;
 	private String addr;
 	private String phone;
 	private Integer uid;
-	private String name;
+	
 	public Integer getOid() {
 		return oid;
 	}
@@ -29,17 +28,11 @@ public class Orders implements java.io.Serializable {
 	public void setTotal(Double total) {
 		this.total = total;
 	}
-	public Date getOrdertime() {
-		return ordertime;
+	public Date getCreatetime() {
+		return createtime;
 	}
-	public void setOrdertime(Date ordertime) {
-		this.ordertime = ordertime;
-	}
-	public Integer getState() {
-		return state;
-	}
-	public void setState(Integer state) {
-		this.state = state;
+	public void setCreatetime(Date createtime) {
+		this.createtime = createtime;
 	}
 	public String getAddr() {
 		return addr;
@@ -59,22 +52,16 @@ public class Orders implements java.io.Serializable {
 	public void setUid(Integer uid) {
 		this.uid = uid;
 	}
-	public String getName() {
-		return name;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	
 	@Override
 	public String toString() {
-		return "orders [oid=" + oid + ", total=" + total + ", ordertime=" + ordertime + ", state=" + state + ", addr="
-				+ addr + ", phone=" + phone + ", uid=" + uid + ", name=" + name + ", getOid()=" + getOid()
-				+ ", getTotal()=" + getTotal() + ", getOrdertime()=" + getOrdertime() + ", getState()=" + getState()
-				+ ", getAddr()=" + getAddr() + ", getPhone()=" + getPhone() + ", getUid()=" + getUid() + ", getName()="
-				+ getName() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
-				+ super.toString() + "]";
+		return "Orders [oid=" + oid + ", total=" + total + ", createtime=" + createtime + ", addr=" + addr + ", phone="
+				+ phone + ", uid=" + uid + "]";
 	}
+	
+	
 	
 	
 }

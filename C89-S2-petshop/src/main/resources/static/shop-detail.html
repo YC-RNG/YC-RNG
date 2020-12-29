@@ -128,9 +128,8 @@
 									<a href="javascript:void(0);">商店页 <i class="fa fa-angle-down"></i></a>
 									<ul class="list-unstyled text-uppercase dropdown">
 										<li><a href="shop.html">商店</a></li>
-										<li><a href="shop-detail.html">商品详情</a></li>
+										<li><a href="orders.html">我的订单</a></li>
 										<li><a href="cart.html">购物车</a></li>
-										<li><a href="checkout.html">结算</a></li>
 									</ul>
 								</li>
 								<li class="logo hidden-xs"><a href="index.html"><img class="img-responsive" src="images/logo.png" alt="PetShop"></a></li>
@@ -230,7 +229,8 @@
 											<span class="price">${{pet.price}}</span>
 										</div>
 										<div class="text-center">
-											<a href="cart.html" class="btn-primary lg-round text-uppercase"><i class="icon-cart"></i>加入购物车</a>
+											<a href="cart.html" @click.prevent="addCart(pet.pid)" class="btn-primary lg-round text-uppercase">
+											<i class="icon-cart"></i> 加入购物车</a>										
 										</div>
 									</div>
 								</div>

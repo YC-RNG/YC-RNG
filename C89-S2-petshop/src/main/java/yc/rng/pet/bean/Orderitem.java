@@ -1,17 +1,15 @@
 package yc.rng.pet.bean;
 
 public class Orderitem implements java.io.Serializable{
-
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
- 
+	
 	private Integer itemid;
 	private Integer count;
 	private Double subtotal;
 	private Integer pid;
-	private Integer oid;
+	private Integer oid	;
+
 	public Integer getItemid() {
 		return itemid;
 	}
@@ -42,12 +40,11 @@ public class Orderitem implements java.io.Serializable{
 	public void setOid(Integer oid) {
 		this.oid = oid;
 	}
+	
 	@Override
 	public String toString() {
-		return "orderitem [itemid=" + itemid + ", count=" + count + ", subtotal=" + subtotal + ", pid=" + pid + ", oid="
-				+ oid + ", getItemid()=" + getItemid() + ", getCount()=" + getCount() + ", getSubtotal()="
-				+ getSubtotal() + ", getPid()=" + getPid() + ", getOid()=" + getOid() + ", getClass()=" + getClass()
-				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+		return "Orderitem [itemid=" + itemid + ", count=" + count + ", subtotal=" + subtotal + ", pid=" + pid + ", oid="
+				+ oid + "]";
 	}
 	
 	
