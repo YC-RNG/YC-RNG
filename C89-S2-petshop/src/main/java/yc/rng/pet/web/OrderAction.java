@@ -27,11 +27,12 @@ public class OrderAction {
 	
 	@RequestMapping("insertOrders")
 	public Result insertOrders(Orders orders, HttpSession session ,String addr,String phone) {
-		User user = (User) session.getAttribute("loginedUser");
+
 		try {
+			User user = (User) session.getAttribute("loginedUser");
 			orders.setUid(user.getUid());
 			orders.setPhone(phone);
-			orders.setAddr(addr);
+			orders.setAddr(addr); 
 			obiz.pay(orders);
 			return new Result(1, "提交成功！");
 		} catch (Exception e) {

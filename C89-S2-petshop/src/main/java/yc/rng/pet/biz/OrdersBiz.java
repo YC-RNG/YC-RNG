@@ -31,7 +31,7 @@ public class OrdersBiz {
 		Double total = cdao.selectTotalByUid(orders.getUid());
 		orders.setTotal(total);
 		
-		// 写入数据库
+		// 写入数据库 
 		// 订单主表  orders
 		int oid = odao.insert(orders);
 		

@@ -12,7 +12,6 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 import yc.rng.pet.bean.Orderitem;
 import yc.rng.pet.bean.Orders;
-import yc.rng.pet.bean.Pets;
 
 
 
@@ -28,7 +27,6 @@ public class OrderDao extends BaseDao{
 		String sql = "insert into orders values(null,?,now(),?,?,?)";
 		KeyHolder kh = new GeneratedKeyHolder();
 		jt.update(new PreparedStatementCreator() {
- 
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				PreparedStatement ps = con.prepareStatement(sql, new String[] {"oid"});
@@ -92,7 +90,7 @@ public class OrderDao extends BaseDao{
 		}};
 	
 	
-	private RowMapper<Orders> ordersRowMapper = new RowMapper<Orders>() {
+	/*private RowMapper<Orders> ordersRowMapper = new RowMapper<Orders>() {
 
 		@Override
 		public Orders mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -104,7 +102,7 @@ public class OrderDao extends BaseDao{
 			orders.setPhone(rs.getString("phone"));
 			orders.setUid(rs.getInt("uid"));
 			return orders;
-		}}; 
+		}}; */
 
 
 	public List<Orderitem> selectByOid(Integer oid) {
